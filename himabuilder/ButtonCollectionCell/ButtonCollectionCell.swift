@@ -8,22 +8,21 @@
 
 import UIKit
 
-
-class ButtonCollectionCell: UICollectionViewCell {
+open class ButtonCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var button: UIButton!
     
-    var data: Button! {
+    open var data: Button! {
         didSet {
             setup()
         }
     }
     
-    override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    override func prepareForReuse() {
+    open override func prepareForReuse() {
         self.button.setTitle("", for: .normal)
     }
     

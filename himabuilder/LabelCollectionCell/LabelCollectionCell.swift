@@ -8,19 +8,19 @@
 
 import UIKit
 
-class LabelCollectionCell: UICollectionViewCell {
+open class LabelCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblValue: UILabel!
     @IBOutlet weak var container: UIView!
     
-    var data: Label! {
+    open var data: Label! {
         didSet {
             setup()
         }
     }
 
-    override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
     }
@@ -29,7 +29,7 @@ class LabelCollectionCell: UICollectionViewCell {
         addBorders([.bottom])
     }
     
-    override func prepareForReuse() {
+    open override func prepareForReuse() {
         self.lblTitle.text = nil
         self.lblValue.text = ""
     }

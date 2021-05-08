@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum FormElement {
+public enum FormElement {
     case linearSelect(LinearSelect)
     case push(Push)
     case text(Text)
@@ -26,20 +26,20 @@ protocol NibFormElement {
     static var nibName: String { get }
 }
 
-class BaseFormElement {
-    var title: String?
-    var subtitle: String?
-    var value: String?
-    var mandatory: Bool = false
-    var enable: Bool = true
+open class BaseFormElement {
+    open var title: String?
+    open var subtitle: String?
+    open var value: String?
+    open var mandatory: Bool = false
+    open var enable: Bool = true
     
-    typealias OnValueUpdate = ((BaseFormElement, String?) -> Void)
-    typealias OnClick = ((BaseFormElement, UIView?) -> Void)
+    public typealias OnValueUpdate = ((BaseFormElement, String?) -> Void)
+    public typealias OnClick = ((BaseFormElement, UIView?) -> Void)
     
     var onValueUpdate: OnValueUpdate?
     var onClick: OnClick?
     
-    convenience init(title: String, value: String?, onValueUpdate: OnValueUpdate?, onClick: OnClick?) {
+    public convenience init(title: String, value: String?, onValueUpdate: OnValueUpdate?, onClick: OnClick?) {
         self.init()
         self.title = title
         self.value = value
@@ -47,92 +47,92 @@ class BaseFormElement {
         self.onClick = onClick
     }
     
-    convenience init(title: String, value: String?, onValueUpdate: OnValueUpdate?) {
+    public convenience init(title: String, value: String?, onValueUpdate: OnValueUpdate?) {
         self.init(title: title, value: value, onValueUpdate: onValueUpdate, onClick: nil)
     }
-    convenience init(title: String, value: String?, onClick: OnClick?) {
+    
+    public convenience init(title: String, value: String?, onClick: OnClick?) {
         self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)
     }
 }
 
-protocol GenericRepresentable {
+public protocol GenericRepresentable {
     var _id: String { get }
     var _title: String { get }
     var _subtitle: String? { get }
     var _isSelected: Bool? { get set }
-
 }
 
-extension GenericRepresentable {    
+public extension GenericRepresentable {
     var _subtitle: String? {
         return nil
     }
+    
     var _isSelected: Bool? {
         get {
             return false
         }
-        set(newValue) {
-        }
+        set(newValue) { }
     }
 }
 
-class LinearSelect: BaseFormElement, NibFormElement {
+open class LinearSelect: BaseFormElement, NibFormElement {
     static var nibName: String = "LinearSelectCollectionCell"
-    var values: [GenericRepresentable] = []
-    var multipleValues: Bool = false
+    open var values: [GenericRepresentable] = []
+    open var multipleValues: Bool = false
     
-    convenience init(title: String, value: String?, values: [GenericRepresentable], multipleValues: Bool = false, onClick: OnClick?) {
+    public convenience init(title: String, value: String?, values: [GenericRepresentable], multipleValues: Bool = false, onClick: OnClick?) {
         self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)
         self.multipleValues = multipleValues
         self.values = values
     }
 }
 
-class Button: BaseFormElement, NibFormElement {
+open class Button: BaseFormElement, NibFormElement {
     static var nibName: String = "ButtonCollectionCell"
-    var height: CGFloat = 60.0
+    open var height: CGFloat = 60.0
 
-    convenience init(title: String, value: String?, height: CGFloat, onClick: OnClick?) {
+    public convenience init(title: String, value: String?, height: CGFloat, onClick: OnClick?) {
         self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)
         self.height = height
     }
 }
 
-class Push: BaseFormElement, NibFormElement {
+open class Push: BaseFormElement, NibFormElement {
     static var nibName: String = "PushCollectionCell"
     
-    convenience init(title: String, value: String?, onClick: OnClick?) {
+    public convenience init(title: String, value: String?, onClick: OnClick?) {
         self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)
     }
 }
 
-class Text: BaseFormElement, NibFormElement {
+open class Text: BaseFormElement, NibFormElement {
     static var nibName: String = "TextCollectionCell"
 }
 
-class TextArea: BaseFormElement, NibFormElement {
+open class TextArea: BaseFormElement, NibFormElement {
     static var nibName: String = "TextAreaCollectionCell"
 }
 
-class Label: BaseFormElement, NibFormElement {
+open class Label: BaseFormElement, NibFormElement {
     static var nibName: String = "LabelCollectionCell"
-    var height: CGFloat = 40.0
+    open var height: CGFloat = 40.0
     
-    convenience init(title: String, value: String?, height: CGFloat, onClick: OnClick?) {
+    public convenience init(title: String, value: String?, height: CGFloat, onClick: OnClick?) {
         self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)
         self.height = height
     }
 }
 
-extension UICollectionView {
-    func registerFormCell() {
+public extension UICollectionView {
+    open func registerFormCell() {
 //        self.backgroundColor = .blue
         FormElement.nibNames.forEach( {
             self.register(UINib(nibName: $0, bundle: .main), forCellWithReuseIdentifier: $0)
         })        
     }
     
-    func linearSelectCell(_ data: LinearSelect, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func linearSelectCell(_ data: LinearSelect, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.dequeueReusableCell(withReuseIdentifier: LinearSelect.nibName, for: indexPath)
         guard let formCell = cell as? LinearSelectCollectionCell else {
             return UICollectionViewCell()
@@ -142,7 +142,7 @@ extension UICollectionView {
         return formCell
     }
     
-    func textCell(_ data: Text, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func textCell(_ data: Text, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.dequeueReusableCell(withReuseIdentifier: Text.nibName, for: indexPath)
         guard let formCell = cell as? TextCollectionCell else {
             return UICollectionViewCell()
@@ -152,7 +152,7 @@ extension UICollectionView {
         return formCell
     }
     
-    func textAreaCell(_ data: TextArea, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func textAreaCell(_ data: TextArea, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.dequeueReusableCell(withReuseIdentifier: TextArea.nibName, for: indexPath)
         guard let formCell = cell as? TextAreaCollectionCell else {
             return UICollectionViewCell()
@@ -162,7 +162,7 @@ extension UICollectionView {
         return formCell
     }
     
-    func labelCell(_ data: Label, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func labelCell(_ data: Label, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.dequeueReusableCell(withReuseIdentifier: Label.nibName, for: indexPath)
         guard let formCell = cell as? LabelCollectionCell else {
             return UICollectionViewCell()
@@ -173,7 +173,7 @@ extension UICollectionView {
         return formCell
     }
     
-    func pushCell(_ data: Push, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func pushCell(_ data: Push, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.dequeueReusableCell(withReuseIdentifier: Push.nibName, for: indexPath)
         guard let formCell = cell as? PushCollectionCell else {
             return UICollectionViewCell()
@@ -184,7 +184,7 @@ extension UICollectionView {
         return formCell
     }
     
-    func buttonCell(_ data: Button, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func buttonCell(_ data: Button, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.dequeueReusableCell(withReuseIdentifier: Button.nibName, for: indexPath)
         guard let formCell = cell as? ButtonCollectionCell else {
             return UICollectionViewCell()
@@ -195,7 +195,7 @@ extension UICollectionView {
         return formCell
     }
     
-    func formElementListCell(_ element: FormElement, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func formElementListCell(_ element: FormElement, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch element {
         case .linearSelect(let data):
             return linearSelectCell(data, cellForItemAt: indexPath)
