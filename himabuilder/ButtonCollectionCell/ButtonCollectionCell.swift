@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class ButtonCollectionCell: UICollectionViewCell {
+public class ButtonCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var button: UIButton!
     
@@ -18,11 +18,11 @@ open class ButtonCollectionCell: UICollectionViewCell {
         }
     }
     
-    open override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    open override func prepareForReuse() {
+    public override func prepareForReuse() {
         self.button.setTitle("", for: .normal)
     }
     

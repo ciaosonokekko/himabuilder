@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class LabelCollectionCell: UICollectionViewCell {
+public class LabelCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblValue: UILabel!

@@ -8,24 +8,24 @@
 
 import UIKit
 
-open class LinearSelectCollectionCell: UICollectionViewCell {
+public class LinearSelectCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblValue: UILabel!
     
-    open var data: LinearSelect! {
+    public var data: LinearSelect! {
         didSet {
             setup()
         }
     }
     
-    open override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         
         setupUI()
     }
     
-    open override func prepareForReuse() {
+    public override func prepareForReuse() {
         self.lblTitle.text = nil
         self.lblValue.textColor = .systemGray3
         self.lblValue.text = "Tocca per selezionare"

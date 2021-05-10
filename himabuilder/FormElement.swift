@@ -125,14 +125,22 @@ open class Label: BaseFormElement, NibFormElement {
 }
 
 public extension UICollectionView {
-    open func registerFormCell() {
+    func registerFormCell() {
 //        self.backgroundColor = .blue
-        FormElement.nibNames.forEach( {
-            self.register(UINib(nibName: $0, bundle: .main), forCellWithReuseIdentifier: $0)
-        })        
+        
+        self.register(UINib(nibName: LinearSelect.nibName, bundle: Bundle(for: LinearSelectCollectionCell.self)), forCellWithReuseIdentifier: LinearSelect.nibName)
+        self.register(UINib(nibName: Button.nibName, bundle: Bundle(for: ButtonCollectionCell.self)), forCellWithReuseIdentifier: Button.nibName)
+        self.register(UINib(nibName: Label.nibName, bundle: Bundle(for: LabelCollectionCell.self)), forCellWithReuseIdentifier: Label.nibName)
+        self.register(UINib(nibName: Push.nibName, bundle: Bundle(for: PushCollectionCell.self)), forCellWithReuseIdentifier: Push.nibName)
+        self.register(UINib(nibName: TextArea.nibName, bundle: Bundle(for: TextAreaCollectionCell.self)), forCellWithReuseIdentifier: TextArea.nibName)
+        self.register(UINib(nibName: Text.nibName, bundle: Bundle(for: TextCollectionCell.self)), forCellWithReuseIdentifier: Text.nibName)
+        
+//        FormElement.nibNames.forEach( {
+//            self.register(UINib(nibName: $0, bundle: .main), forCellWithReuseIdentifier: $0)
+//        })
     }
     
-    open func linearSelectCell(_ data: LinearSelect, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func linearSelectCell(_ data: LinearSelect, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.dequeueReusableCell(withReuseIdentifier: LinearSelect.nibName, for: indexPath)
         guard let formCell = cell as? LinearSelectCollectionCell else {
             return UICollectionViewCell()
@@ -142,7 +150,7 @@ public extension UICollectionView {
         return formCell
     }
     
-    open func textCell(_ data: Text, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func textCell(_ data: Text, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.dequeueReusableCell(withReuseIdentifier: Text.nibName, for: indexPath)
         guard let formCell = cell as? TextCollectionCell else {
             return UICollectionViewCell()
@@ -152,7 +160,7 @@ public extension UICollectionView {
         return formCell
     }
     
-    open func textAreaCell(_ data: TextArea, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func textAreaCell(_ data: TextArea, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.dequeueReusableCell(withReuseIdentifier: TextArea.nibName, for: indexPath)
         guard let formCell = cell as? TextAreaCollectionCell else {
             return UICollectionViewCell()
@@ -162,7 +170,7 @@ public extension UICollectionView {
         return formCell
     }
     
-    open func labelCell(_ data: Label, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func labelCell(_ data: Label, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.dequeueReusableCell(withReuseIdentifier: Label.nibName, for: indexPath)
         guard let formCell = cell as? LabelCollectionCell else {
             return UICollectionViewCell()
@@ -173,7 +181,7 @@ public extension UICollectionView {
         return formCell
     }
     
-    open func pushCell(_ data: Push, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func pushCell(_ data: Push, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.dequeueReusableCell(withReuseIdentifier: Push.nibName, for: indexPath)
         guard let formCell = cell as? PushCollectionCell else {
             return UICollectionViewCell()
@@ -184,7 +192,7 @@ public extension UICollectionView {
         return formCell
     }
     
-    open func buttonCell(_ data: Button, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func buttonCell(_ data: Button, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.dequeueReusableCell(withReuseIdentifier: Button.nibName, for: indexPath)
         guard let formCell = cell as? ButtonCollectionCell else {
             return UICollectionViewCell()
@@ -195,7 +203,7 @@ public extension UICollectionView {
         return formCell
     }
     
-    open func formElementListCell(_ element: FormElement, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func formElementListCell(_ element: FormElement, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch element {
         case .linearSelect(let data):
             return linearSelectCell(data, cellForItemAt: indexPath)
