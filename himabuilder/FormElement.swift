@@ -47,6 +47,10 @@ open class BaseFormElement {
         self.onClick = onClick
     }
     
+    public convenience init(title: String, value: String?) {
+        self.init(title: title, value: value, onValueUpdate: nil, onClick: nil)
+    }
+    
     public convenience init(title: String, value: String?, onValueUpdate: OnValueUpdate?) {
         self.init(title: title, value: value, onValueUpdate: onValueUpdate, onClick: nil)
     }
@@ -73,6 +77,12 @@ public extension GenericRepresentable {
             return false
         }
         set(newValue) { }
+    }
+}
+
+public extension GenericRepresentable {
+    static func == (lhs: GenericRepresentable, rhs: GenericRepresentable) -> Bool {
+        lhs._id == rhs._id
     }
 }
 

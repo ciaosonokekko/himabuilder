@@ -27,6 +27,11 @@ public class LabelCollectionCell: UICollectionViewCell {
     
     fileprivate func setupUI() {
         addBorders([.bottom])
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClick)))
+    }
+    
+    @objc func onClick() {
+        data.onClick?(data, self)
     }
     
     open override func prepareForReuse() {

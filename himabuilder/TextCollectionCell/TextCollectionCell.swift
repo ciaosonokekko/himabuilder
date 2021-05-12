@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
+class TextCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var txtValue: UITextField!
@@ -21,11 +21,15 @@ class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setupUI()
     }
     
     fileprivate func setupUI() {
-        // base setup ui
+        self.txtValue.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        data.onValueUpdate?(data, textField.text)
     }
     
     override func prepareForReuse() {

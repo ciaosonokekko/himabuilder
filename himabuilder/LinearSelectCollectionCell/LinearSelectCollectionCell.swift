@@ -56,6 +56,15 @@ public class LinearSelectCollectionCell: UICollectionViewCell {
         }
     }
     
+    public func updateValue(_ genericRepresentable: GenericRepresentable?) {
+        updateValue(genericRepresentable?._title)
+    }
+    
+    public func updateValue(_ value: String?) {
+        data.value = value
+        setup()        
+    }
+    
     @objc func onClick() {
         data.onClick?(data, self)
     }
