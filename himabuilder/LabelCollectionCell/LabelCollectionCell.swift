@@ -57,4 +57,13 @@ public class LabelCollectionCell: UICollectionViewCell {
             self.lblTitle.textColor = .label
         }
     }
+    
+    public func updateValue(_ genericRepresentable: GenericRepresentable?) {
+        updateValue(genericRepresentable?._title)
+    }
+    
+    public func updateValue(_ value: String?) {
+        data.value = value
+        setup()
+    }
 }

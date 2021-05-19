@@ -37,10 +37,10 @@ class PushCollectionCell: UICollectionViewCell {
     
     func setup() {
         if data.value == nil {
-            self.lblTitle.textColor = .systemGray3
+            self.lblValue.textColor = .systemGray3
             self.lblTitle.text = "Tocca per selezionare"
         } else {
-            self.lblTitle.textColor = .label
+            self.lblValue.textColor = .label
             self.lblValue.text = data.value
         }
         self.lblTitle.text = data.title

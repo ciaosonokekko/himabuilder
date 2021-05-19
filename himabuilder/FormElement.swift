@@ -22,7 +22,7 @@ public enum FormElement {
     }
 }
 
-protocol NibFormElement {
+public protocol NibFormElement {
     static var nibName: String { get }
 }
 
@@ -87,7 +87,7 @@ public extension GenericRepresentable {
 }
 
 open class LinearSelect: BaseFormElement, NibFormElement {
-    static var nibName: String = "LinearSelectCollectionCell"
+    public static var nibName: String = "LinearSelectCollectionCell"
     open var values: [GenericRepresentable] = []
     open var multipleValues: Bool = false
     
@@ -99,17 +99,18 @@ open class LinearSelect: BaseFormElement, NibFormElement {
 }
 
 open class Button: BaseFormElement, NibFormElement {
-    static var nibName: String = "ButtonCollectionCell"
+    static public var nibName: String = "ButtonCollectionCell"
     open var height: CGFloat = 60.0
-
-    public convenience init(title: String, value: String?, height: CGFloat, onClick: OnClick?) {
+    open var btnColor: UIColor = .systemBlue
+    public convenience init(title: String, value: String?, height: CGFloat, onClick: OnClick?, btnColor: UIColor) {
         self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)
         self.height = height
+        self.btnColor = btnColor
     }
 }
 
 open class Push: BaseFormElement, NibFormElement {
-    static var nibName: String = "PushCollectionCell"
+    public static var nibName: String = "PushCollectionCell"
     
     public convenience init(title: String, value: String?, onClick: OnClick?) {
         self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)
@@ -117,15 +118,15 @@ open class Push: BaseFormElement, NibFormElement {
 }
 
 open class Text: BaseFormElement, NibFormElement {
-    static var nibName: String = "TextCollectionCell"
+    public static var nibName: String = "TextCollectionCell"
 }
 
 open class TextArea: BaseFormElement, NibFormElement {
-    static var nibName: String = "TextAreaCollectionCell"
+    public static var nibName: String = "TextAreaCollectionCell"
 }
 
 open class Label: BaseFormElement, NibFormElement {
-    static var nibName: String = "LabelCollectionCell"
+    public static var nibName: String = "LabelCollectionCell"
     open var height: CGFloat = 40.0
     
     public convenience init(title: String, value: String?, height: CGFloat, onClick: OnClick?) {

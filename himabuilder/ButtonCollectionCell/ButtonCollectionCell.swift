@@ -28,6 +28,7 @@ public class ButtonCollectionCell: UICollectionViewCell {
     
     func setup() {
         self.button.setTitle(data.title, for: .normal)
+        self.button.setTitleColor(data.btnColor, for: .normal)
         
     }
     

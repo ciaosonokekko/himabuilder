@@ -8,18 +8,18 @@
 
 import UIKit
 
-class TextCollectionCell: UICollectionViewCell {
+public class TextCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var txtValue: UITextField!
-    
-    var data: Text! {
+
+    public var data: Text! {
         didSet {
             setup()
         }
     }
 
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
     }
@@ -32,8 +32,17 @@ class TextCollectionCell: UICollectionViewCell {
         data.onValueUpdate?(data, textField.text)
     }
     
-    override func prepareForReuse() {
+    public override func prepareForReuse() {
         #warning("ALBE USAMII!!")
+    }
+    
+    public func updateValue(_ genericRepresentable: GenericRepresentable?) {
+        updateValue(genericRepresentable?._title)
+    }
+    
+    public func updateValue(_ value: String?) {
+        data.value = value
+        setup()
     }
     
     func setup() {
