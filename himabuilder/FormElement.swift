@@ -35,16 +35,19 @@ open class BaseFormElement {
     
     public typealias OnValueUpdate = ((BaseFormElement, String?) -> Void)
     public typealias OnClick = ((BaseFormElement, UIView?) -> Void)
+    public typealias OnEndEditing = ((BaseFormElement, String?) -> Void)
     
+    var onEndEditing: OnEndEditing?
     var onValueUpdate: OnValueUpdate?
     var onClick: OnClick?
     
-    public convenience init(title: String, value: String?, onValueUpdate: OnValueUpdate?, onClick: OnClick?) {
+    public convenience init(title: String, value: String?, onValueUpdate: OnValueUpdate?, onClick: OnClick?, onEndEditing: OnEndEditing? = nil) {
         self.init()
         self.title = title
         self.value = value
         self.onValueUpdate = onValueUpdate
         self.onClick = onClick
+        self.onEndEditing = onEndEditing
     }
     
     public convenience init(title: String, value: String?) {
@@ -118,7 +121,16 @@ open class Push: BaseFormElement, NibFormElement {
 }
 
 open class Text: BaseFormElement, NibFormElement {
+    
+  
+
     public static var nibName: String = "TextCollectionCell"
+    
+    public convenience init(title: String, value: String?, onValueUpdate: OnValueUpdate?, onEndEditing: OnEndEditing?) {
+        self.init(title: title, value: value, onValueUpdate: onValueUpdate, onClick: nil, onEndEditing: onEndEditing)
+    }
+    
+    
 }
 
 open class TextArea: BaseFormElement, NibFormElement {

@@ -9,7 +9,7 @@
 import UIKit
 
 
-class PushCollectionCell: UICollectionViewCell {
+public class PushCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblValue: UILabel!
@@ -20,13 +20,13 @@ class PushCollectionCell: UICollectionViewCell {
         }
     }
     
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         
         setupUI()
     }
     
-    override func prepareForReuse() {
+    public override func prepareForReuse() {
         self.lblTitle.text = nil
         self.lblValue.text = "Tocca per selezionare"
     }
@@ -49,6 +49,15 @@ class PushCollectionCell: UICollectionViewCell {
     
     @objc func onClick() {
         data.onClick?(data, self)
+    }
+    
+    public func updateValue(_ genericRepresentable: GenericRepresentable?) {
+        updateValue(genericRepresentable?._title)
+    }
+    
+    public func updateValue(_ value: String?) {
+        data.value = value
+        setup()
     }
 
 }

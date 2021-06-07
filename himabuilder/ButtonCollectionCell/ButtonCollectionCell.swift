@@ -32,6 +32,10 @@ public class ButtonCollectionCell: UICollectionViewCell {
         
     }
     
+    public func setEnabled(val: Bool) {
+        self.button.isEnabled = val
+    }
+    
     @IBAction func btnTapped(_ sender: Any) {
         self.onClick()
     }

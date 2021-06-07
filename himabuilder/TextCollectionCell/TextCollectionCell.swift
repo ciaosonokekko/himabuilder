@@ -8,10 +8,12 @@
 
 import UIKit
 
-public class TextCollectionCell: UICollectionViewCell {
+public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var txtValue: UITextField!
+    
+   
 
     public var data: Text! {
         didSet {
@@ -26,10 +28,15 @@ public class TextCollectionCell: UICollectionViewCell {
     
     fileprivate func setupUI() {
         self.txtValue.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        self.txtValue.delegate = self
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         data.onValueUpdate?(data, textField.text)
+    }
+    
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        data.onEndEditing?(data, textField.text)
     }
     
     public override func prepareForReuse() {
