@@ -20,6 +20,8 @@
 		1311D7A72646846F00CB97C3 /* ButtonCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1311D7992646846F00CB97C3 /* ButtonCollectionCell.xib */; };
 		1311D7A82646846F00CB97C3 /* TextCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1311D79B2646846F00CB97C3 /* TextCollectionCell.xib */; };
 		1311D7A92646846F00CB97C3 /* TextCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311D79C2646846F00CB97C3 /* TextCollectionCell.swift */; };
+		13A07A3C2714802D00090AC7 /* CheckCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A07A3A2714802D00090AC7 /* CheckCollectionCell.swift */; };
+		13A07A3D2714802D00090AC7 /* CheckCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A07A3B2714802D00090AC7 /* CheckCollectionCell.xib */; };
 		13E6961D264683A900D78168 /* himabuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 13E6961B264683A900D78168 /* himabuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,8 @@
 		1311D7992646846F00CB97C3 /* ButtonCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonCollectionCell.xib; sourceTree = "<group>"; };
 		1311D79B2646846F00CB97C3 /* TextCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCollectionCell.xib; sourceTree = "<group>"; };
 		1311D79C2646846F00CB97C3 /* TextCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCollectionCell.swift; sourceTree = "<group>"; };
+		13A07A3A2714802D00090AC7 /* CheckCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCollectionCell.swift; sourceTree = "<group>"; };
+		13A07A3B2714802D00090AC7 /* CheckCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckCollectionCell.xib; sourceTree = "<group>"; };
 		13E69618264683A900D78168 /* himabuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = himabuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E6961B264683A900D78168 /* himabuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = himabuilder.h; sourceTree = "<group>"; };
 		13E6961C264683A900D78168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,6 +111,15 @@
 			path = TextCollectionCell;
 			sourceTree = "<group>";
 		};
+		13A07A392714801A00090AC7 /* CheckCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				13A07A3A2714802D00090AC7 /* CheckCollectionCell.swift */,
+				13A07A3B2714802D00090AC7 /* CheckCollectionCell.xib */,
+			);
+			path = CheckCollectionCell;
+			sourceTree = "<group>";
+		};
 		13E6960E264683A900D78168 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +139,7 @@
 		13E6961A264683A900D78168 /* himabuilder */ = {
 			isa = PBXGroup;
 			children = (
+				13A07A392714801A00090AC7 /* CheckCollectionCell */,
 				1311D78A2646846F00CB97C3 /* FormElement.swift */,
 				1311D78B2646846F00CB97C3 /* LinearSelectCollectionCell */,
 				1311D78E2646846F00CB97C3 /* LabelCollectionCell */,
@@ -209,6 +223,7 @@
 			files = (
 				1311D7A02646846F00CB97C3 /* LabelCollectionCell.xib in Resources */,
 				1311D79E2646846F00CB97C3 /* LinearSelectCollectionCell.xib in Resources */,
+				13A07A3D2714802D00090AC7 /* CheckCollectionCell.xib in Resources */,
 				1311D7A82646846F00CB97C3 /* TextCollectionCell.xib in Resources */,
 				1311D7A72646846F00CB97C3 /* ButtonCollectionCell.xib in Resources */,
 				1311D7A22646846F00CB97C3 /* TextAreaCollectionCell.xib in Resources */,
@@ -229,6 +244,7 @@
 				1311D7A62646846F00CB97C3 /* ButtonCollectionCell.swift in Sources */,
 				1311D7A92646846F00CB97C3 /* TextCollectionCell.swift in Sources */,
 				1311D7A42646846F00CB97C3 /* PushCollectionCell.swift in Sources */,
+				13A07A3C2714802D00090AC7 /* CheckCollectionCell.swift in Sources */,
 				1311D79D2646846F00CB97C3 /* FormElement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

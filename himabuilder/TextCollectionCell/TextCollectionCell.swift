@@ -13,8 +13,6 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var txtValue: UITextField!
     
-   
-
     public var data: Text! {
         didSet {
             setup()

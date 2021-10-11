@@ -11,14 +11,33 @@ import UIKit
 
 public enum FormElement {
     case linearSelect(LinearSelect)
-    case push(Push)
+//    case push(Push)
     case text(Text)
     case textarea(TextArea)
     case label(Label)
     case button(Button)
+    case check(Check)
     
     static var nibNames: [String] {
         return [LinearSelect.nibName, Text.nibName, TextArea.nibName, Label.nibName, Push.nibName, Button.nibName]
+    }
+    
+    public var hidden: Bool {
+        switch(self) {
+        case .linearSelect(let element): return element.hidden
+        case .text(let element): return element.hidden
+        case .textarea(let element): return element.hidden
+        case .label(let element): return element.hidden
+        case .button(let element): return element.hidden
+        case .check(let element): return element.hidden
+        }
+    }
+    
+    public var height: CGFloat {
+        switch(self) {
+        case .textarea(_): return hidden ? 0 : 120
+        default: return hidden ? 0 : 44
+        }
     }
 }
 
@@ -31,6 +50,7 @@ open class BaseFormElement {
     open var subtitle: String?
     open var value: String?
     open var mandatory: Bool = false
+    open var hidden: Bool = false
     open var enable: Bool = true
     
     public typealias OnValueUpdate = ((BaseFormElement, String?) -> Void)
@@ -41,10 +61,12 @@ open class BaseFormElement {
     var onValueUpdate: OnValueUpdate?
     var onClick: OnClick?
     
-    public convenience init(title: String, value: String?, onValueUpdate: OnValueUpdate?, onClick: OnClick?, onEndEditing: OnEndEditing? = nil) {
+    public convenience init(title: String, value: String? = nil, mandatory: Bool = false, hidden: Bool = false, onValueUpdate: OnValueUpdate? = nil, onClick: OnClick? = nil, onEndEditing: OnEndEditing? = nil) {
         self.init()
         self.title = title
         self.value = value
+        self.mandatory = mandatory
+        self.hidden = hidden
         self.onValueUpdate = onValueUpdate
         self.onClick = onClick
         self.onEndEditing = onEndEditing
@@ -94,8 +116,8 @@ open class LinearSelect: BaseFormElement, NibFormElement {
     open var values: [GenericRepresentable] = []
     open var multipleValues: Bool = false
     
-    public convenience init(title: String, value: String?, values: [GenericRepresentable], multipleValues: Bool = false, onClick: OnClick?) {
-        self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)
+    public convenience init(title: String, value: String?, values: [GenericRepresentable], mandatory: Bool = false, hidden: Bool = false, multipleValues: Bool = false, onClick: OnClick?) {
+        self.init(title: title, value: value, mandatory: mandatory, hidden: hidden, onValueUpdate: nil, onClick: onClick)
         self.multipleValues = multipleValues
         self.values = values
     }
@@ -105,10 +127,19 @@ open class Button: BaseFormElement, NibFormElement {
     static public var nibName: String = "ButtonCollectionCell"
     open var height: CGFloat = 60.0
     open var btnColor: UIColor = .systemBlue
-    public convenience init(title: String, value: String?, height: CGFloat, onClick: OnClick?, btnColor: UIColor) {
+    
+    public convenience init(title: String, value: String? = nil, height: CGFloat = 60, btnColor: UIColor = .systemBlue, onClick: OnClick?) {
         self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)
         self.height = height
         self.btnColor = btnColor
+    }
+}
+
+open class Check: BaseFormElement, NibFormElement {
+    static public var nibName: String = "SwitchCollectionCell"
+    
+    public convenience init(title: String, value: String? = nil, onValueUpdate: OnValueUpdate?) {
+        self.init(title: title, value: value, onValueUpdate: onValueUpdate, onClick: nil)
     }
 }
 
@@ -121,16 +152,11 @@ open class Push: BaseFormElement, NibFormElement {
 }
 
 open class Text: BaseFormElement, NibFormElement {
-    
-  
-
     public static var nibName: String = "TextCollectionCell"
     
     public convenience init(title: String, value: String?, onValueUpdate: OnValueUpdate?, onEndEditing: OnEndEditing?) {
         self.init(title: title, value: value, onValueUpdate: onValueUpdate, onClick: nil, onEndEditing: onEndEditing)
     }
-    
-    
 }
 
 open class TextArea: BaseFormElement, NibFormElement {
@@ -141,7 +167,7 @@ open class Label: BaseFormElement, NibFormElement {
     public static var nibName: String = "LabelCollectionCell"
     open var height: CGFloat = 40.0
     
-    public convenience init(title: String, value: String?, height: CGFloat, onClick: OnClick?) {
+    public convenience init(title: String, value: String?, height: CGFloat = 40.0, onClick: OnClick? = nil) {
         self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)
         self.height = height
     }
@@ -169,7 +195,7 @@ public extension UICollectionView {
             return UICollectionViewCell()
         }
         formCell.data = data
-        formCell.addBorders([.full])
+        formCell.addBorders([.bottom])
         return formCell
     }
     
@@ -226,6 +252,17 @@ public extension UICollectionView {
         return formCell
     }
     
+    func checkCell(_ data: Check, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.dequeueReusableCell(withReuseIdentifier: Check.nibName, for: indexPath)
+        guard let formCell = cell as? CheckCollectionCell else {
+            return UICollectionViewCell()
+        }
+        formCell.data = data
+//        formCell.addBorders([.bottom])
+//        formCell.addBorders([.customRight(BorderData(width: 5, color: .red)), .customLeft(BorderData(width: 5, color: .red))])
+        return formCell
+    }
+    
     func formElementListCell(_ element: FormElement, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch element {
         case .linearSelect(let data):
@@ -236,10 +273,12 @@ public extension UICollectionView {
             return textAreaCell(data, cellForItemAt: indexPath)
         case .label(let data):
             return labelCell(data, cellForItemAt: indexPath)
-        case .push(let data):
-            return pushCell(data, cellForItemAt: indexPath)
+//        case .push(let data):
+//            return pushCell(data, cellForItemAt: indexPath)
         case .button(let data):
             return buttonCell(data, cellForItemAt: indexPath)
+        case .check(let data):
+            return checkCell(data, cellForItemAt: indexPath)
         }
     }
 }
