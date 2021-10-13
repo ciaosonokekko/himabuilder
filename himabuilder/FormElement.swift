@@ -58,6 +58,7 @@ open class BaseFormElement {
     open var hidden: Bool = false
     open var enable: Bool = true
     open var orientation: OrientationType = .standard
+    open var keyboardType: UIKeyboardType = .default
     
     public typealias OnValueUpdate = ((BaseFormElement, String?) -> Void)
     public typealias OnClick = ((BaseFormElement, UIView?) -> Void)
@@ -67,12 +68,13 @@ open class BaseFormElement {
     var onValueUpdate: OnValueUpdate?
     var onClick: OnClick?
     
-    public convenience init(title: String, value: String? = nil, mandatory: Bool = false, orientation: OrientationType = .standard, hidden: Bool = false, onValueUpdate: OnValueUpdate? = nil, onClick: OnClick? = nil, onEndEditing: OnEndEditing? = nil) {
+    public convenience init(title: String, value: String? = nil, mandatory: Bool = false, orientation: OrientationType = .standard, keyboardType: UIKeyboardType = .default, hidden: Bool = false, onValueUpdate: OnValueUpdate? = nil, onClick: OnClick? = nil, onEndEditing: OnEndEditing? = nil) {
         self.init()
         self.title = title
         self.value = value
         self.mandatory = mandatory
         self.orientation = orientation
+        self.keyboardType = keyboardType
         self.hidden = hidden
         self.onValueUpdate = onValueUpdate
         self.onClick = onClick
@@ -174,8 +176,8 @@ open class Label: BaseFormElement, NibFormElement {
     public static var nibName: String = "LabelCollectionCell"
     public static var nibName2: String = "LabelVerticalCollectionCell"
     
-    public convenience init(title: String, value: String?, onClick: OnClick? = nil) {
-        self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)        
+    public convenience init(title: String, value: String?, onClick: OnClick? = nil, orientation: OrientationType = .standard) {
+        self.init(title: title, value: value, orientation: orientation, onValueUpdate: nil, onClick: onClick)
     }
 }
 

@@ -30,15 +30,20 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
+        data.value = textField.text
         data.onValueUpdate?(data, textField.text)
+        evaluateMandatory()
     }
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
+        data.value = textField.text
         data.onEndEditing?(data, textField.text)
+        evaluateMandatory()
     }
     
     public override func prepareForReuse() {
-        #warning("ALBE USAMII!!")
+        self.lblTitle.text = nil
+        self.txtValue.text = nil
     }
     
     public func updateValue(_ genericRepresentable: GenericRepresentable?) {
@@ -54,11 +59,13 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
         self.lblTitle.text = data.title
         self.txtValue.text = data.value
         
+        self.txtValue.keyboardType = data.keyboardType
+        
         evaluateMandatory()
     }
     
     func evaluateMandatory() {
-        if data.mandatory && data.value == nil {
+        if data.mandatory && data.value?.isEmpty ?? true {
             self.lblTitle.textColor = .red
         } else {
             self.lblTitle.textColor = .label
