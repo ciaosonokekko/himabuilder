@@ -1,19 +1,17 @@
 //
-//  TextCollectionCell.swift
-//  Mambu
+//  LabelVerticalCollectionCell.swift
+//  himabuilder
 //
-//  Created by Francesco Cosenza on 14/04/21.
-//  Copyright © 2021 Francesco Cosenza. All rights reserved.
+//  Created by Francesco Cosenza on 13/10/21.
 //
 
 import UIKit
 
-public class LabelCollectionCell: UICollectionViewCell {
-    
+class LabelVerticalCollectionCell: UICollectionViewCell {
+
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblValue: UILabel!
-    @IBOutlet weak var container: UIView!
-    
+
     open var data: Label! {
         didSet {
             setup()
@@ -27,6 +25,8 @@ public class LabelCollectionCell: UICollectionViewCell {
     
     fileprivate func setupUI() {
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onClick)))
+        
+        self.lblValue.textColor = .systemGray
     }
     
     @objc func onClick() {
@@ -39,8 +39,8 @@ public class LabelCollectionCell: UICollectionViewCell {
     }
     
     func setup() {
-        self.container.backgroundColor = .systemBackground
-        self.container.clipsToBounds = true
+//        self.container.backgroundColor = .systemBackground
+//        self.container.clipsToBounds = true
         self.lblTitle.text = data.title
         self.lblValue.text = data.value
 //        self.lblValue.backgroundColor = .red
@@ -65,4 +65,5 @@ public class LabelCollectionCell: UICollectionViewCell {
         data.value = value
         setup()
     }
+
 }

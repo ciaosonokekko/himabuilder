@@ -11,7 +11,6 @@ import UIKit
 
 public enum FormElement {
     case linearSelect(LinearSelect)
-//    case push(Push)
     case text(Text)
     case textarea(TextArea)
     case label(Label)
@@ -19,7 +18,7 @@ public enum FormElement {
     case check(Check)
     
     static var nibNames: [String] {
-        return [LinearSelect.nibName, Text.nibName, TextArea.nibName, Label.nibName, Push.nibName, Button.nibName]
+        return [LinearSelect.nibName, Text.nibName, TextArea.nibName, Label.nibName, Button.nibName]
     }
     
     public var hidden: Bool {
@@ -165,11 +164,12 @@ open class TextArea: BaseFormElement, NibFormElement {
 
 open class Label: BaseFormElement, NibFormElement {
     public static var nibName: String = "LabelCollectionCell"
-    open var height: CGFloat = 40.0
+    public static var nibName2: String = "LabelVerticalCollectionCell"
+    var vertical: Bool = false
     
-    public convenience init(title: String, value: String?, height: CGFloat = 40.0, onClick: OnClick? = nil) {
+    public convenience init(title: String, value: String?, vertical: Bool = false, onClick: OnClick? = nil) {
         self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)
-        self.height = height
+        self.vertical = vertical
     }
 }
 
@@ -180,6 +180,7 @@ public extension UICollectionView {
         self.register(UINib(nibName: LinearSelect.nibName, bundle: Bundle(for: LinearSelectCollectionCell.self)), forCellWithReuseIdentifier: LinearSelect.nibName)
         self.register(UINib(nibName: Button.nibName, bundle: Bundle(for: ButtonCollectionCell.self)), forCellWithReuseIdentifier: Button.nibName)
         self.register(UINib(nibName: Label.nibName, bundle: Bundle(for: LabelCollectionCell.self)), forCellWithReuseIdentifier: Label.nibName)
+        self.register(UINib(nibName: Label.nibName2, bundle: Bundle(for: LabelVerticalCollectionCell.self)), forCellWithReuseIdentifier: Label.nibName2)
         self.register(UINib(nibName: Push.nibName, bundle: Bundle(for: PushCollectionCell.self)), forCellWithReuseIdentifier: Push.nibName)
         self.register(UINib(nibName: TextArea.nibName, bundle: Bundle(for: TextAreaCollectionCell.self)), forCellWithReuseIdentifier: TextArea.nibName)
         self.register(UINib(nibName: Text.nibName, bundle: Bundle(for: TextCollectionCell.self)), forCellWithReuseIdentifier: Text.nibName)
@@ -225,19 +226,17 @@ public extension UICollectionView {
             return UICollectionViewCell()
         }
         formCell.data = data
-//        formCell.addBorders([.bottom])
-//        formCell.addBorders([.customRight(BorderData(width: 5, color: .red)), .customLeft(BorderData(width: 5, color: .red))])
+        formCell.addBorders([.bottom])
         return formCell
     }
     
-    func pushCell(_ data: Push, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.dequeueReusableCell(withReuseIdentifier: Push.nibName, for: indexPath)
-        guard let formCell = cell as? PushCollectionCell else {
+    func labelVerticalCell(_ data: Label, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.dequeueReusableCell(withReuseIdentifier: Label.nibName2, for: indexPath)
+        guard let formCell = cell as? LabelVerticalCollectionCell else {
             return UICollectionViewCell()
         }
         formCell.data = data
-//        formCell.addBorders([.bottom])
-//        formCell.addBorders([.customRight(BorderData(width: 5, color: .red)), .customLeft(BorderData(width: 5, color: .red))])
+        formCell.addBorders([.bottom])
         return formCell
     }
     
@@ -258,8 +257,7 @@ public extension UICollectionView {
             return UICollectionViewCell()
         }
         formCell.data = data
-//        formCell.addBorders([.bottom])
-//        formCell.addBorders([.customRight(BorderData(width: 5, color: .red)), .customLeft(BorderData(width: 5, color: .red))])
+        formCell.addBorders([.bottom])
         return formCell
     }
     
@@ -272,9 +270,7 @@ public extension UICollectionView {
         case .textarea(let data):
             return textAreaCell(data, cellForItemAt: indexPath)
         case .label(let data):
-            return labelCell(data, cellForItemAt: indexPath)
-//        case .push(let data):
-//            return pushCell(data, cellForItemAt: indexPath)
+            return data.vertical ? labelVerticalCell(data, cellForItemAt: indexPath) : labelCell(data, cellForItemAt: indexPath)
         case .button(let data):
             return buttonCell(data, cellForItemAt: indexPath)
         case .check(let data):

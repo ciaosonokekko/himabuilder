@@ -22,6 +22,8 @@
 		1311D7A92646846F00CB97C3 /* TextCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311D79C2646846F00CB97C3 /* TextCollectionCell.swift */; };
 		13A07A3C2714802D00090AC7 /* CheckCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A07A3A2714802D00090AC7 /* CheckCollectionCell.swift */; };
 		13A07A3D2714802D00090AC7 /* CheckCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A07A3B2714802D00090AC7 /* CheckCollectionCell.xib */; };
+		13D2295D2716D5CC0075EF4B /* LabelVerticalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D2295B2716D5CC0075EF4B /* LabelVerticalCollectionCell.swift */; };
+		13D2295E2716D5CC0075EF4B /* LabelVerticalCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D2295C2716D5CC0075EF4B /* LabelVerticalCollectionCell.xib */; };
 		13E6961D264683A900D78168 /* himabuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 13E6961B264683A900D78168 /* himabuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		1311D79C2646846F00CB97C3 /* TextCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCollectionCell.swift; sourceTree = "<group>"; };
 		13A07A3A2714802D00090AC7 /* CheckCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCollectionCell.swift; sourceTree = "<group>"; };
 		13A07A3B2714802D00090AC7 /* CheckCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckCollectionCell.xib; sourceTree = "<group>"; };
+		13D2295B2716D5CC0075EF4B /* LabelVerticalCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelVerticalCollectionCell.swift; sourceTree = "<group>"; };
+		13D2295C2716D5CC0075EF4B /* LabelVerticalCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelVerticalCollectionCell.xib; sourceTree = "<group>"; };
 		13E69618264683A900D78168 /* himabuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = himabuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E6961B264683A900D78168 /* himabuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = himabuilder.h; sourceTree = "<group>"; };
 		13E6961C264683A900D78168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -120,6 +124,15 @@
 			path = CheckCollectionCell;
 			sourceTree = "<group>";
 		};
+		13D2295A2716D5990075EF4B /* LabelVerticalCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				13D2295B2716D5CC0075EF4B /* LabelVerticalCollectionCell.swift */,
+				13D2295C2716D5CC0075EF4B /* LabelVerticalCollectionCell.xib */,
+			);
+			path = LabelVerticalCollectionCell;
+			sourceTree = "<group>";
+		};
 		13E6960E264683A900D78168 = {
 			isa = PBXGroup;
 			children = (
@@ -139,8 +152,9 @@
 		13E6961A264683A900D78168 /* himabuilder */ = {
 			isa = PBXGroup;
 			children = (
-				13A07A392714801A00090AC7 /* CheckCollectionCell */,
+				13D2295A2716D5990075EF4B /* LabelVerticalCollectionCell */,
 				1311D78A2646846F00CB97C3 /* FormElement.swift */,
+				13A07A392714801A00090AC7 /* CheckCollectionCell */,
 				1311D78B2646846F00CB97C3 /* LinearSelectCollectionCell */,
 				1311D78E2646846F00CB97C3 /* LabelCollectionCell */,
 				1311D7912646846F00CB97C3 /* TextAreaCollectionCell */,
@@ -227,6 +241,7 @@
 				1311D7A82646846F00CB97C3 /* TextCollectionCell.xib in Resources */,
 				1311D7A72646846F00CB97C3 /* ButtonCollectionCell.xib in Resources */,
 				1311D7A22646846F00CB97C3 /* TextAreaCollectionCell.xib in Resources */,
+				13D2295E2716D5CC0075EF4B /* LabelVerticalCollectionCell.xib in Resources */,
 				1311D7A52646846F00CB97C3 /* PushCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +257,7 @@
 				1311D7A32646846F00CB97C3 /* TextAreaCollectionCell.swift in Sources */,
 				1311D7A12646846F00CB97C3 /* LabelCollectionCell.swift in Sources */,
 				1311D7A62646846F00CB97C3 /* ButtonCollectionCell.swift in Sources */,
+				13D2295D2716D5CC0075EF4B /* LabelVerticalCollectionCell.swift in Sources */,
 				1311D7A92646846F00CB97C3 /* TextCollectionCell.swift in Sources */,
 				1311D7A42646846F00CB97C3 /* PushCollectionCell.swift in Sources */,
 				13A07A3C2714802D00090AC7 /* CheckCollectionCell.swift in Sources */,
