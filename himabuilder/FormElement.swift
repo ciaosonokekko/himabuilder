@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
+public enum OrientationType {
+    case standard
+    case vertical
+    case horizontal
+}
+
 public enum FormElement {
     case linearSelect(LinearSelect)
     case text(Text)
@@ -51,6 +57,7 @@ open class BaseFormElement {
     open var mandatory: Bool = false
     open var hidden: Bool = false
     open var enable: Bool = true
+    open var orientation: OrientationType = .standard
     
     public typealias OnValueUpdate = ((BaseFormElement, String?) -> Void)
     public typealias OnClick = ((BaseFormElement, UIView?) -> Void)
@@ -60,11 +67,12 @@ open class BaseFormElement {
     var onValueUpdate: OnValueUpdate?
     var onClick: OnClick?
     
-    public convenience init(title: String, value: String? = nil, mandatory: Bool = false, hidden: Bool = false, onValueUpdate: OnValueUpdate? = nil, onClick: OnClick? = nil, onEndEditing: OnEndEditing? = nil) {
+    public convenience init(title: String, value: String? = nil, mandatory: Bool = false, orientation: OrientationType = .standard, hidden: Bool = false, onValueUpdate: OnValueUpdate? = nil, onClick: OnClick? = nil, onEndEditing: OnEndEditing? = nil) {
         self.init()
         self.title = title
         self.value = value
         self.mandatory = mandatory
+        self.orientation = orientation
         self.hidden = hidden
         self.onValueUpdate = onValueUpdate
         self.onClick = onClick
@@ -165,11 +173,9 @@ open class TextArea: BaseFormElement, NibFormElement {
 open class Label: BaseFormElement, NibFormElement {
     public static var nibName: String = "LabelCollectionCell"
     public static var nibName2: String = "LabelVerticalCollectionCell"
-    var vertical: Bool = false
     
-    public convenience init(title: String, value: String?, vertical: Bool = false, onClick: OnClick? = nil) {
-        self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)
-        self.vertical = vertical
+    public convenience init(title: String, value: String?, onClick: OnClick? = nil) {
+        self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)        
     }
 }
 
@@ -270,7 +276,12 @@ public extension UICollectionView {
         case .textarea(let data):
             return textAreaCell(data, cellForItemAt: indexPath)
         case .label(let data):
-            return data.vertical ? labelVerticalCell(data, cellForItemAt: indexPath) : labelCell(data, cellForItemAt: indexPath)
+            switch(data.orientation) {
+            case .vertical:
+                return labelVerticalCell(data, cellForItemAt: indexPath)
+            default:
+                return labelCell(data, cellForItemAt: indexPath)
+            }
         case .button(let data):
             return buttonCell(data, cellForItemAt: indexPath)
         case .check(let data):
