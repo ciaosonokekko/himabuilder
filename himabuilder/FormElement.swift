@@ -41,6 +41,7 @@ public enum FormElement {
     public var height: CGFloat {
         switch(self) {
         case .textarea(_): return hidden ? 0 : 120
+        case .label(let label): return hidden ? 0 : (label.orientation == .vertical ? 60 : 44)
         default: return hidden ? 0 : 44
         }
     }
@@ -62,7 +63,7 @@ open class BaseFormElement {
     
     public typealias OnValueUpdate = ((BaseFormElement, String?) -> Void)
     public typealias OnClick = ((BaseFormElement, UIView?) -> Void)
-    public typealias OnEndEditing = ((BaseFormElement, String?) -> Void)
+    public typealias OnEndEditing = ((UICollectionViewCell, BaseFormElement, String?) -> Void)
     
     var onEndEditing: OnEndEditing?
     var onValueUpdate: OnValueUpdate?
@@ -160,11 +161,18 @@ open class Push: BaseFormElement, NibFormElement {
     }
 }
 
+public enum TextType {
+    case standard
+    case date
+}
+
 open class Text: BaseFormElement, NibFormElement {
     public static var nibName: String = "TextCollectionCell"
+    var textType: TextType = .standard
     
-    public convenience init(title: String, value: String?, onValueUpdate: OnValueUpdate?, onEndEditing: OnEndEditing?) {
-        self.init(title: title, value: value, onValueUpdate: onValueUpdate, onClick: nil, onEndEditing: onEndEditing)
+    public convenience init(title: String, value: String?, mandatory: Bool = false, hidden: Bool = false, textType: TextType = .standard, onValueUpdate: OnValueUpdate? = nil, onEndEditing: OnEndEditing? = nil) {
+        self.init(title: title, value: value, mandatory: mandatory, hidden: hidden, onValueUpdate: onValueUpdate, onClick: nil, onEndEditing: onEndEditing)
+        self.textType = textType
     }
 }
 

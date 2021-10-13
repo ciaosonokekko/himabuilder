@@ -37,7 +37,7 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
     
     public func textFieldDidEndEditing(_ textField: UITextField) {
         data.value = textField.text
-        data.onEndEditing?(data, textField.text)
+        data.onEndEditing?(self, data, textField.text)
         evaluateMandatory()
     }
     
@@ -46,11 +46,11 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
         self.txtValue.text = nil
     }
     
-    public func updateValue(_ genericRepresentable: GenericRepresentable?) {
-        updateValue(genericRepresentable?._title)
+    public func updateValue(genericRepresentable: GenericRepresentable?) {
+        updateValue(value: genericRepresentable?._title)
     }
     
-    public func updateValue(_ value: String?) {
+    public func updateValue(value: String?) {
         data.value = value
         setup()
     }
@@ -70,5 +70,23 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
         } else {
             self.lblTitle.textColor = .label
         }
+    }
+    
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard data.textType == .date else {
+            return true
+        }
+        //Format Date of Birth dd-MM-yyyy
+        
+
+        if (textField.text?.count == 2) || (textField.text?.count == 5) {
+            //Handle backspace being pressed
+            if !(string == "") {
+                // append the text
+                textField.text = "\(textField.text ?? "")-"
+            }
+        }
+        // check the condition not exceed 9 chars
+        return !((textField.text?.count ?? 0) > 9 && (string.count ) > range.length)
     }
 }
