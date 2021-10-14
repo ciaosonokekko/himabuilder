@@ -25,13 +25,13 @@ class CheckCollectionCell: UICollectionViewCell {
     
     public override func prepareForReuse() {
         self.title.text = nil
-        self.subTitle.text = nil
+//        self.subTitle.text = nil
         self.check.isOn = false
     }
     
     func setup() {
         self.title.text = data.title
-        self.subTitle.text = data.title
+//        self.subTitle.text = data.title
         self.check.isOn = data.value?.description == "true"
         self.check.addTarget(self, action: #selector(onValueChange(sender:)), for: .valueChanged)
     }

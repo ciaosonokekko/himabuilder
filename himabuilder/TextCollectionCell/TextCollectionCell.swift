@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LUAutocompleteView
 
 public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
     
@@ -19,7 +18,7 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
             setup()
         }
     }
-
+    
     public override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
@@ -74,12 +73,16 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
     }
     
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if !data.suggestions.isEmpty {
+            return !autoCompleteText(in: textField, using: string, suggestionsArray: data.suggestions)
+        }
+        
         guard data.textType == .date else {
             return true
         }
-        //Format Date of Birth dd-MM-yyyy
         
-
+        //Format Date of Birth dd-MM-yyyy
         if (textField.text?.count == 2) || (textField.text?.count == 5) {
             //Handle backspace being pressed
             if !(string == "") {
@@ -90,19 +93,30 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
         // check the condition not exceed 9 chars
         return !((textField.text?.count ?? 0) > 9 && (string.count ) > range.length)
     }
-}
-
-extension TextCollectionCell: LUAutocompleteViewDataSource {
-    func autocompleteView(_ autocompleteView: LUAutocompleteView, elementsFor text: String, completion: @escaping ([String]) -> Void) {
-        let elementsThatMatchInput = elements.filter { $0.lowercased().contains(text.lowercased()) }
-        completion(elementsThatMatchInput)
+    
+    func autoCompleteText(in textField: UITextField, using string: String, suggestionsArray: [String]) -> Bool {
+        if !string.isEmpty,
+           let selectedTextRange = textField.selectedTextRange,
+           selectedTextRange.end == textField.endOfDocument,
+           let prefixRange = textField.textRange(from: textField.beginningOfDocument, to: selectedTextRange.start),
+           let text = textField.text( in : prefixRange) {
+            let prefix = text + string
+            let matches = suggestionsArray.filter {
+                $0.lowercased().hasPrefix(prefix.lowercased())
+            }
+            if (matches.count > 0) {
+                textField.text = matches[0]
+                if let start = textField.position(from: textField.beginningOfDocument, offset: prefix.count) {
+                    textField.selectedTextRange = textField.textRange(from: start, to: textField.endOfDocument)
+                    return true
+                }
+            }
+        }
+        return false
     }
-}
-
-// MARK: - LUAutocompleteViewDelegate
-
-extension TextCollectionCell: LUAutocompleteViewDelegate {
-    func autocompleteView(_ autocompleteView: LUAutocompleteView, didSelect text: String) {
-        print(text + " was selected from autocomplete view")
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

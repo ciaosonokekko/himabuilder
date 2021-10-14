@@ -24,7 +24,7 @@ public enum FormElement {
     case check(Check)
     
     static var nibNames: [String] {
-        return [LinearSelect.nibName, Text.nibName, TextArea.nibName, Label.nibName, Button.nibName]
+        return [LinearSelect.nibName, Text.nibName, TextArea.nibName, Label.nibName, Label.nibName2, Button.nibName, Check.nibName]
     }
     
     public var hidden: Bool {
@@ -146,7 +146,7 @@ open class Button: BaseFormElement, NibFormElement {
 }
 
 open class Check: BaseFormElement, NibFormElement {
-    static public var nibName: String = "SwitchCollectionCell"
+    static public var nibName: String = "CheckCollectionCell"
     
     public convenience init(title: String, value: String? = nil, onValueUpdate: OnValueUpdate?) {
         self.init(title: title, value: value, onValueUpdate: onValueUpdate, onClick: nil)
@@ -198,6 +198,7 @@ public extension UICollectionView {
         
         self.register(UINib(nibName: LinearSelect.nibName, bundle: Bundle(for: LinearSelectCollectionCell.self)), forCellWithReuseIdentifier: LinearSelect.nibName)
         self.register(UINib(nibName: Button.nibName, bundle: Bundle(for: ButtonCollectionCell.self)), forCellWithReuseIdentifier: Button.nibName)
+        self.register(UINib(nibName: Check.nibName, bundle: Bundle(for: CheckCollectionCell.self)), forCellWithReuseIdentifier: Check.nibName)
         self.register(UINib(nibName: Label.nibName, bundle: Bundle(for: LabelCollectionCell.self)), forCellWithReuseIdentifier: Label.nibName)
         self.register(UINib(nibName: Label.nibName2, bundle: Bundle(for: LabelVerticalCollectionCell.self)), forCellWithReuseIdentifier: Label.nibName2)
         self.register(UINib(nibName: TextArea.nibName, bundle: Bundle(for: TextAreaCollectionCell.self)), forCellWithReuseIdentifier: TextArea.nibName)
