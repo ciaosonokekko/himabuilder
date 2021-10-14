@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LUAutocompleteView
 
 public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
     

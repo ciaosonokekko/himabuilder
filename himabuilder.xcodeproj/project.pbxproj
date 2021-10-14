@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,7 @@
 		13D2295D2716D5CC0075EF4B /* LabelVerticalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D2295B2716D5CC0075EF4B /* LabelVerticalCollectionCell.swift */; };
 		13D2295E2716D5CC0075EF4B /* LabelVerticalCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D2295C2716D5CC0075EF4B /* LabelVerticalCollectionCell.xib */; };
 		13E6961D264683A900D78168 /* himabuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 13E6961B264683A900D78168 /* himabuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B469735495CE2296A37636C0 /* Pods_himabuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEC05AD78FCC306F52E0D0E /* Pods_himabuilder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,9 @@
 		13E69618264683A900D78168 /* himabuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = himabuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13E6961B264683A900D78168 /* himabuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = himabuilder.h; sourceTree = "<group>"; };
 		13E6961C264683A900D78168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1D5378D103093E45478E67ED /* Pods-himabuilder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-himabuilder.release.xcconfig"; path = "Target Support Files/Pods-himabuilder/Pods-himabuilder.release.xcconfig"; sourceTree = "<group>"; };
+		BBEC05AD78FCC306F52E0D0E /* Pods_himabuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_himabuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F788153ABD1499159D1A6888 /* Pods-himabuilder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-himabuilder.debug.xcconfig"; path = "Target Support Files/Pods-himabuilder/Pods-himabuilder.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B469735495CE2296A37636C0 /* Pods_himabuilder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +130,8 @@
 			children = (
 				13E6961A264683A900D78168 /* himabuilder */,
 				13E69619264683A900D78168 /* Products */,
+				3DF80D16B0AA824CEA0A3FDE /* Pods */,
+				5653196FFA6D0969D392D49E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +160,24 @@
 			path = himabuilder;
 			sourceTree = "<group>";
 		};
+		3DF80D16B0AA824CEA0A3FDE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F788153ABD1499159D1A6888 /* Pods-himabuilder.debug.xcconfig */,
+				1D5378D103093E45478E67ED /* Pods-himabuilder.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5653196FFA6D0969D392D49E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBEC05AD78FCC306F52E0D0E /* Pods_himabuilder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -171,6 +196,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13E69620264683A900D78168 /* Build configuration list for PBXNativeTarget "himabuilder" */;
 			buildPhases = (
+				27B5782D77CB22F8CDB7F466 /* [CP] Check Pods Manifest.lock */,
 				13E69613264683A900D78168 /* Headers */,
 				13E69614264683A900D78168 /* Sources */,
 				13E69615264683A900D78168 /* Frameworks */,
@@ -207,9 +233,6 @@
 				Base,
 			);
 			mainGroup = 13E6960E264683A900D78168;
-			packageReferences = (
-				13D229672718661E0075EF4B /* XCRemoteSwiftPackageReference "LUAutocompleteView" */,
-			);
 			productRefGroup = 13E69619264683A900D78168 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -235,6 +258,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		27B5782D77CB22F8CDB7F466 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-himabuilder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		13E69614264683A900D78168 /* Sources */ = {
@@ -379,6 +427,7 @@
 		};
 		13E69621264683A900D78168 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F788153ABD1499159D1A6888 /* Pods-himabuilder.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -403,6 +452,7 @@
 		};
 		13E69622264683A900D78168 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D5378D103093E45478E67ED /* Pods-himabuilder.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -447,17 +497,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		13D229672718661E0075EF4B /* XCRemoteSwiftPackageReference "LUAutocompleteView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/LaurentiuUngur/LUAutocompleteView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 13E6960F264683A900D78168 /* Project object */;
 }

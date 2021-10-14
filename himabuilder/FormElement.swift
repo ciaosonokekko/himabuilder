@@ -161,12 +161,21 @@ public enum TextType {
 open class Text: BaseFormElement, NibFormElement {
     public static var nibName: String = "TextCollectionCell"
     var textType: TextType = .standard
-    var autoComplete: Bool = false
     var suggestions: [String] = []
     
-    public convenience init(title: String, value: String?, mandatory: Bool = false, hidden: Bool = false, textType: TextType = .standard, autoComplete: Bool = false, suggestions: [String] = [], onValueUpdate: OnValueUpdate? = nil, onEndEditing: OnEndEditing? = nil) {
+    public convenience init(
+        title: String,
+        value: String?,
+        mandatory: Bool = false,
+        hidden: Bool = false,
+        textType: TextType = .standard,
+        suggestions: [String] = [],
+        onValueUpdate: OnValueUpdate? = nil,
+        onEndEditing: OnEndEditing? = nil
+    ) {
         self.init(title: title, value: value, mandatory: mandatory, hidden: hidden, onValueUpdate: onValueUpdate, onClick: nil, onEndEditing: onEndEditing)
         self.textType = textType
+        self.suggestions = suggestions
     }
 }
 
