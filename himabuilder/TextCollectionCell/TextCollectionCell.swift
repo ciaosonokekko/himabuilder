@@ -91,3 +91,18 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
         return !((textField.text?.count ?? 0) > 9 && (string.count ) > range.length)
     }
 }
+
+extension TextCollectionCell: LUAutocompleteViewDataSource {
+    func autocompleteView(_ autocompleteView: LUAutocompleteView, elementsFor text: String, completion: @escaping ([String]) -> Void) {
+        let elementsThatMatchInput = elements.filter { $0.lowercased().contains(text.lowercased()) }
+        completion(elementsThatMatchInput)
+    }
+}
+
+// MARK: - LUAutocompleteViewDelegate
+
+extension TextCollectionCell: LUAutocompleteViewDelegate {
+    func autocompleteView(_ autocompleteView: LUAutocompleteView, didSelect text: String) {
+        print(text + " was selected from autocomplete view")
+    }
+}
