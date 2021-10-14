@@ -152,8 +152,8 @@
 		13E6961A264683A900D78168 /* himabuilder */ = {
 			isa = PBXGroup;
 			children = (
-				13D2295A2716D5990075EF4B /* LabelVerticalCollectionCell */,
 				1311D78A2646846F00CB97C3 /* FormElement.swift */,
+				13D2295A2716D5990075EF4B /* LabelVerticalCollectionCell */,
 				13A07A392714801A00090AC7 /* CheckCollectionCell */,
 				1311D78B2646846F00CB97C3 /* LinearSelectCollectionCell */,
 				1311D78E2646846F00CB97C3 /* LabelCollectionCell */,

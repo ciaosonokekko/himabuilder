@@ -55,7 +55,10 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="gIx-lP-hoT" secondAttribute="trailing" constant="8" id="3Ba-Zk-ihB"/>
                 <constraint firstItem="gIx-lP-hoT" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="A1P-Kw-DLt"/>
+                <constraint firstItem="gIx-lP-hoT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="KhU-BU-DGh"/>
+                <constraint firstItem="gIx-lP-hoT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Ukm-du-tC0"/>
                 <constraint firstAttribute="trailing" secondItem="gIx-lP-hoT" secondAttribute="trailing" constant="8" id="VBX-be-vMJ"/>
                 <constraint firstItem="gIx-lP-hoT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="X1v-QU-zSG"/>
                 <constraint firstItem="gIx-lP-hoT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="wgn-jy-lX3"/>
