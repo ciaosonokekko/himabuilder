@@ -153,14 +153,6 @@ open class Check: BaseFormElement, NibFormElement {
     }
 }
 
-open class Push: BaseFormElement, NibFormElement {
-    public static var nibName: String = "PushCollectionCell"
-    
-    public convenience init(title: String, value: String?, onClick: OnClick?) {
-        self.init(title: title, value: value, onValueUpdate: nil, onClick: onClick)
-    }
-}
-
 public enum TextType {
     case standard
     case date
@@ -169,8 +161,10 @@ public enum TextType {
 open class Text: BaseFormElement, NibFormElement {
     public static var nibName: String = "TextCollectionCell"
     var textType: TextType = .standard
+    var autoComplete: Bool = false
+    var suggestions: [String] = []
     
-    public convenience init(title: String, value: String?, mandatory: Bool = false, hidden: Bool = false, textType: TextType = .standard, onValueUpdate: OnValueUpdate? = nil, onEndEditing: OnEndEditing? = nil) {
+    public convenience init(title: String, value: String?, mandatory: Bool = false, hidden: Bool = false, textType: TextType = .standard, autoComplete: Bool = false, suggestions: [String] = [], onValueUpdate: OnValueUpdate? = nil, onEndEditing: OnEndEditing? = nil) {
         self.init(title: title, value: value, mandatory: mandatory, hidden: hidden, onValueUpdate: onValueUpdate, onClick: nil, onEndEditing: onEndEditing)
         self.textType = textType
     }
@@ -197,7 +191,6 @@ public extension UICollectionView {
         self.register(UINib(nibName: Button.nibName, bundle: Bundle(for: ButtonCollectionCell.self)), forCellWithReuseIdentifier: Button.nibName)
         self.register(UINib(nibName: Label.nibName, bundle: Bundle(for: LabelCollectionCell.self)), forCellWithReuseIdentifier: Label.nibName)
         self.register(UINib(nibName: Label.nibName2, bundle: Bundle(for: LabelVerticalCollectionCell.self)), forCellWithReuseIdentifier: Label.nibName2)
-        self.register(UINib(nibName: Push.nibName, bundle: Bundle(for: PushCollectionCell.self)), forCellWithReuseIdentifier: Push.nibName)
         self.register(UINib(nibName: TextArea.nibName, bundle: Bundle(for: TextAreaCollectionCell.self)), forCellWithReuseIdentifier: TextArea.nibName)
         self.register(UINib(nibName: Text.nibName, bundle: Bundle(for: TextCollectionCell.self)), forCellWithReuseIdentifier: Text.nibName)
         

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,8 +14,6 @@
 		1311D7A12646846F00CB97C3 /* LabelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311D7902646846F00CB97C3 /* LabelCollectionCell.swift */; };
 		1311D7A22646846F00CB97C3 /* TextAreaCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1311D7922646846F00CB97C3 /* TextAreaCollectionCell.xib */; };
 		1311D7A32646846F00CB97C3 /* TextAreaCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311D7932646846F00CB97C3 /* TextAreaCollectionCell.swift */; };
-		1311D7A42646846F00CB97C3 /* PushCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311D7952646846F00CB97C3 /* PushCollectionCell.swift */; };
-		1311D7A52646846F00CB97C3 /* PushCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1311D7962646846F00CB97C3 /* PushCollectionCell.xib */; };
 		1311D7A62646846F00CB97C3 /* ButtonCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311D7982646846F00CB97C3 /* ButtonCollectionCell.swift */; };
 		1311D7A72646846F00CB97C3 /* ButtonCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1311D7992646846F00CB97C3 /* ButtonCollectionCell.xib */; };
 		1311D7A82646846F00CB97C3 /* TextCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1311D79B2646846F00CB97C3 /* TextCollectionCell.xib */; };
@@ -35,8 +33,6 @@
 		1311D7902646846F00CB97C3 /* LabelCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelCollectionCell.swift; sourceTree = "<group>"; };
 		1311D7922646846F00CB97C3 /* TextAreaCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextAreaCollectionCell.xib; sourceTree = "<group>"; };
 		1311D7932646846F00CB97C3 /* TextAreaCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextAreaCollectionCell.swift; sourceTree = "<group>"; };
-		1311D7952646846F00CB97C3 /* PushCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushCollectionCell.swift; sourceTree = "<group>"; };
-		1311D7962646846F00CB97C3 /* PushCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PushCollectionCell.xib; sourceTree = "<group>"; };
 		1311D7982646846F00CB97C3 /* ButtonCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCollectionCell.swift; sourceTree = "<group>"; };
 		1311D7992646846F00CB97C3 /* ButtonCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonCollectionCell.xib; sourceTree = "<group>"; };
 		1311D79B2646846F00CB97C3 /* TextCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextCollectionCell.xib; sourceTree = "<group>"; };
@@ -86,15 +82,6 @@
 				1311D7932646846F00CB97C3 /* TextAreaCollectionCell.swift */,
 			);
 			path = TextAreaCollectionCell;
-			sourceTree = "<group>";
-		};
-		1311D7942646846F00CB97C3 /* PushCollectionCell */ = {
-			isa = PBXGroup;
-			children = (
-				1311D7952646846F00CB97C3 /* PushCollectionCell.swift */,
-				1311D7962646846F00CB97C3 /* PushCollectionCell.xib */,
-			);
-			path = PushCollectionCell;
 			sourceTree = "<group>";
 		};
 		1311D7972646846F00CB97C3 /* ButtonCollectionCell */ = {
@@ -158,7 +145,6 @@
 				1311D78B2646846F00CB97C3 /* LinearSelectCollectionCell */,
 				1311D78E2646846F00CB97C3 /* LabelCollectionCell */,
 				1311D7912646846F00CB97C3 /* TextAreaCollectionCell */,
-				1311D7942646846F00CB97C3 /* PushCollectionCell */,
 				1311D7972646846F00CB97C3 /* ButtonCollectionCell */,
 				1311D79A2646846F00CB97C3 /* TextCollectionCell */,
 				13E6961B264683A900D78168 /* himabuilder.h */,
@@ -221,6 +207,9 @@
 				Base,
 			);
 			mainGroup = 13E6960E264683A900D78168;
+			packageReferences = (
+				13D229672718661E0075EF4B /* XCRemoteSwiftPackageReference "LUAutocompleteView" */,
+			);
 			productRefGroup = 13E69619264683A900D78168 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -242,7 +231,6 @@
 				1311D7A72646846F00CB97C3 /* ButtonCollectionCell.xib in Resources */,
 				1311D7A22646846F00CB97C3 /* TextAreaCollectionCell.xib in Resources */,
 				13D2295E2716D5CC0075EF4B /* LabelVerticalCollectionCell.xib in Resources */,
-				1311D7A52646846F00CB97C3 /* PushCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +247,6 @@
 				1311D7A62646846F00CB97C3 /* ButtonCollectionCell.swift in Sources */,
 				13D2295D2716D5CC0075EF4B /* LabelVerticalCollectionCell.swift in Sources */,
 				1311D7A92646846F00CB97C3 /* TextCollectionCell.swift in Sources */,
-				1311D7A42646846F00CB97C3 /* PushCollectionCell.swift in Sources */,
 				13A07A3C2714802D00090AC7 /* CheckCollectionCell.swift in Sources */,
 				1311D79D2646846F00CB97C3 /* FormElement.swift in Sources */,
 			);
@@ -460,6 +447,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		13D229672718661E0075EF4B /* XCRemoteSwiftPackageReference "LUAutocompleteView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LaurentiuUngur/LUAutocompleteView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 13E6960F264683A900D78168 /* Project object */;
 }
