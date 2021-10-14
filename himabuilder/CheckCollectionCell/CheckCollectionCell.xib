@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="357" height="93"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvi-9k-pJt">
-                                <rect key="frame" x="8" y="36" width="284" height="21"/>
+                                <rect key="frame" x="8" y="36" width="41.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -37,7 +37,6 @@
                             <constraint firstItem="wsn-UG-zYo" firstAttribute="centerY" secondItem="N84-tw-GDp" secondAttribute="centerY" id="KC7-EL-u7q"/>
                             <constraint firstItem="xvi-9k-pJt" firstAttribute="leading" secondItem="N84-tw-GDp" secondAttribute="leading" constant="8" id="abN-oE-RHB"/>
                             <constraint firstAttribute="trailing" secondItem="wsn-UG-zYo" secondAttribute="trailing" constant="8" id="e2E-CN-JT8"/>
-                            <constraint firstItem="wsn-UG-zYo" firstAttribute="leading" secondItem="xvi-9k-pJt" secondAttribute="trailing" constant="8" id="xXT-6H-Dpl"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -45,7 +44,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="N84-tw-GDp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1Nu-CP-vcc"/>
-                <constraint firstAttribute="bottom" secondItem="N84-tw-GDp" secondAttribute="bottom" id="Wwe-yQ-tIl"/>
+                <constraint firstItem="N84-tw-GDp" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="3El-bg-GPg"/>
                 <constraint firstAttribute="trailing" secondItem="N84-tw-GDp" secondAttribute="trailing" id="cbo-r6-1JO"/>
                 <constraint firstItem="N84-tw-GDp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="sOB-Va-TjX"/>
             </constraints>
