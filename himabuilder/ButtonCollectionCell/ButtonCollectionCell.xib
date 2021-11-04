@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +21,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="377" height="60"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0g-JJ-NkK">
-                                <rect key="frame" x="0.0" y="0.0" width="377" height="60"/>
+                                <rect key="frame" x="159" y="10" width="59" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="tJ3-RL-AIG"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Button"/>
                                 <state key="disabled">
@@ -34,19 +37,17 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Z0g-JJ-NkK" firstAttribute="top" secondItem="NIl-OK-ElM" secondAttribute="top" id="9a6-Fk-Zzn"/>
-                            <constraint firstAttribute="bottom" secondItem="Z0g-JJ-NkK" secondAttribute="bottom" id="bfg-X9-iPA"/>
-                            <constraint firstItem="Z0g-JJ-NkK" firstAttribute="leading" secondItem="NIl-OK-ElM" secondAttribute="leading" id="rzv-oo-nTb"/>
-                            <constraint firstAttribute="trailing" secondItem="Z0g-JJ-NkK" secondAttribute="trailing" id="xjl-ke-qDW"/>
+                            <constraint firstItem="Z0g-JJ-NkK" firstAttribute="centerX" secondItem="NIl-OK-ElM" secondAttribute="centerX" id="SC6-nP-kRn"/>
+                            <constraint firstItem="Z0g-JJ-NkK" firstAttribute="centerY" secondItem="NIl-OK-ElM" secondAttribute="centerY" id="gK6-uZ-jqT"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="NIl-OK-ElM" secondAttribute="trailing" id="LXz-S8-cbx"/>
-                <constraint firstAttribute="bottom" secondItem="NIl-OK-ElM" secondAttribute="bottom" id="RcP-cp-boP"/>
-                <constraint firstItem="NIl-OK-ElM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="TjY-BS-ABx"/>
-                <constraint firstItem="NIl-OK-ElM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="bdj-hv-K7Q"/>
+                <constraint firstAttribute="trailing" secondItem="NIl-OK-ElM" secondAttribute="trailing" id="1Ir-IC-22h"/>
+                <constraint firstItem="NIl-OK-ElM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Lmd-un-EuV"/>
+                <constraint firstItem="NIl-OK-ElM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mdV-do-74Z"/>
+                <constraint firstItem="NIl-OK-ElM" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="vIJ-zw-lua"/>
             </constraints>
             <size key="customSize" width="377" height="160"/>
             <connections>

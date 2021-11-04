@@ -383,6 +383,12 @@ extension UIView {
         border.backgroundColor = color
         self.addSubview(border)
         self.bringSubviewToFront(border)
+        
+        NSLayoutConstraint.activate([
+            border.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            border.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+//            border.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
     }
     
 }
