@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIl-OK-ElM">
                         <rect key="frame" x="0.0" y="0.0" width="377" height="60"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5k-Qd-Wm8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5k-Qd-Wm8">
                                 <rect key="frame" x="8" y="15" width="42" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="i66-AZ-gbz"/>
@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tocca per selezionare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBn-Vr-Idy">
-                                <rect key="frame" x="219.5" y="15" width="149.5" height="30"/>
+                                <rect key="frame" x="66" y="15" width="303" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="B6S-g0-Tgd"/>
                                 </constraints>
@@ -45,6 +45,7 @@
                             <constraint firstItem="F5k-Qd-Wm8" firstAttribute="leading" secondItem="NIl-OK-ElM" secondAttribute="leading" constant="8" id="G7E-H8-siB"/>
                             <constraint firstItem="F5k-Qd-Wm8" firstAttribute="centerY" secondItem="NIl-OK-ElM" secondAttribute="centerY" id="k5b-gD-fTp"/>
                             <constraint firstAttribute="trailing" secondItem="nBn-Vr-Idy" secondAttribute="trailing" constant="8" id="pZZ-a5-tJj"/>
+                            <constraint firstItem="nBn-Vr-Idy" firstAttribute="leading" secondItem="F5k-Qd-Wm8" secondAttribute="trailing" constant="16" id="txO-1J-bt0"/>
                         </constraints>
                     </view>
                 </subviews>

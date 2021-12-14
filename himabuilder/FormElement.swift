@@ -124,12 +124,14 @@ public extension GenericRepresentable {
 open class LinearSelect: BaseFormElement, NibFormElement {
     public static var nibName: String = "LinearSelectCollectionCell"
     open var values: [GenericRepresentable] = []
+    open var selectedValues: [GenericRepresentable] = []
     open var multipleValues: Bool = false
     
-    public convenience init(title: String, value: String?, values: [GenericRepresentable], mandatory: Bool = false, hidden: Bool = false, multipleValues: Bool = false, onClick: OnClick?) {
+    public convenience init(title: String, value: String?, values: [GenericRepresentable], selectedValues: [GenericRepresentable] = [], mandatory: Bool = false, hidden: Bool = false, multipleValues: Bool = false, onClick: OnClick?) {
         self.init(title: title, value: value, mandatory: mandatory, hidden: hidden, onValueUpdate: nil, onClick: onClick)
         self.multipleValues = multipleValues
         self.values = values
+        self.selectedValues = selectedValues
     }
 }
 
