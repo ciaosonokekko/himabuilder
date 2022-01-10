@@ -121,6 +121,22 @@ public extension GenericRepresentable {
     }
 }
 
+public class GenericRepresentableStringContainer: GenericRepresentable {
+    public let value: String
+    
+    public init(value: String) {
+        self.value = value
+    }
+    
+    public var _id: String {
+        value
+    }
+    
+    public var _title: String {
+        value
+    }
+}
+
 open class LinearSelect: BaseFormElement, NibFormElement {
     public static var nibName: String = "LinearSelectCollectionCell"
     open var values: [GenericRepresentable] = []
