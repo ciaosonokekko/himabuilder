@@ -36,7 +36,7 @@ public class LinearSelectCollectionCell: UICollectionViewCell {
     }
     
     func setup() {
-        if data.value == nil {
+        if data.value?.isEmpty ?? true {
             self.lblValue.textColor = .systemGray3
             self.lblValue.text = "Tocca per selezionare"
         } else {
@@ -49,7 +49,7 @@ public class LinearSelectCollectionCell: UICollectionViewCell {
     }
     
     func evaluateMandatory() {
-        if data.mandatory && data.value == nil {
+        if data.mandatory && (data.value?.isEmpty ?? true) {
             self.lblTitle.textColor = .red
         } else {
             self.lblTitle.textColor = .label
