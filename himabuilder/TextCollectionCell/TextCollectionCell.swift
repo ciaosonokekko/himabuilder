@@ -12,6 +12,9 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var txtValue: UITextField!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var btnIcon: UIButton!
+    
     
     public var data: Text! {
         didSet {
@@ -44,6 +47,8 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
     public override func prepareForReuse() {
         self.lblTitle.text = nil
         self.txtValue.text = nil
+        self.btnIcon.isHidden = true
+        // todo: hide button
     }
     
     public func updateValue(genericRepresentable: GenericRepresentable?) {
@@ -59,9 +64,28 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
         self.lblTitle.text = data.title
         self.txtValue.text = data.value
         
+        if let btnImage = self.data.buttonIcon {
+//            let button = UIButton()
+////            button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+//            button.translatesAutoresizingMaskIntoConstraints = false
+//            button.widthAnchor.constraint(equalToConstant: 30).isActive = true
+//            button.heightAnchor.constraint(equalToConstant: 30).isActive = true
+            btnIcon.setTitle("", for: .normal)
+            btnIcon.setImage(btnImage, for: UIControl.State.normal)
+            btnIcon.contentMode = .scaleAspectFit
+            btnIcon.addTarget(self, action:#selector(self.buttonTapped), for: .touchUpInside)
+            btnIcon.isHidden = false
+//            self.stackView.addArrangedSubview(button)
+        }
+        
+        
         self.txtValue.keyboardType = data.keyboardType
         
         evaluateMandatory()
+    }
+    
+    @objc func buttonTapped() {
+        data.onClick?(data, self)
     }
     
     func evaluateMandatory() {

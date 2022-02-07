@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,22 +30,35 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tocca qui per scrivere" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V3k-l7-RY7">
-                                <rect key="frame" x="116" y="21" width="220" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="1rP-PD-VIf"/>
-                                    <constraint firstAttribute="height" constant="30" id="PbX-HH-wZL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="33c-fx-Agk">
+                                <rect key="frame" x="185" y="21" width="151" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tocca qui per scrivere" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V3k-l7-RY7">
+                                        <rect key="frame" x="0.0" y="0.0" width="151" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="PbX-HH-wZL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                    </textField>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOm-Pn-R1Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="9x2-GU-qBn"/>
+                                            <constraint firstAttribute="height" constant="30" id="sQi-1W-be6"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="stz-tz-jRm" firstAttribute="leading" secondItem="62C-Ey-Kco" secondAttribute="leading" constant="8" id="BiB-l1-chj"/>
-                            <constraint firstItem="V3k-l7-RY7" firstAttribute="centerY" secondItem="62C-Ey-Kco" secondAttribute="centerY" id="Jsw-KY-jlf"/>
-                            <constraint firstAttribute="trailing" secondItem="V3k-l7-RY7" secondAttribute="trailing" constant="8" id="WXg-vl-awJ"/>
-                            <constraint firstItem="V3k-l7-RY7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="stz-tz-jRm" secondAttribute="trailing" constant="16" id="eoS-3K-1yy"/>
+                            <constraint firstItem="33c-fx-Agk" firstAttribute="centerY" secondItem="stz-tz-jRm" secondAttribute="centerY" id="SNP-EG-NGe"/>
+                            <constraint firstAttribute="trailing" secondItem="33c-fx-Agk" secondAttribute="trailing" constant="8" id="Tb9-R1-K2I"/>
+                            <constraint firstItem="V3k-l7-RY7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="stz-tz-jRm" secondAttribute="trailing" constant="16" id="coB-Oh-bC2"/>
                             <constraint firstItem="stz-tz-jRm" firstAttribute="centerY" secondItem="62C-Ey-Kco" secondAttribute="centerY" id="n3G-S6-aHs"/>
                         </constraints>
                     </view>
@@ -60,7 +73,9 @@
             </constraints>
             <size key="customSize" width="344" height="72"/>
             <connections>
+                <outlet property="btnIcon" destination="yOm-Pn-R1Y" id="d9p-iW-wFK"/>
                 <outlet property="lblTitle" destination="stz-tz-jRm" id="BE9-3z-pLZ"/>
+                <outlet property="stackView" destination="33c-fx-Agk" id="p2o-fX-lEM"/>
                 <outlet property="txtValue" destination="V3k-l7-RY7" id="R6k-Ai-QvB"/>
             </connections>
             <point key="canvasLocation" x="66.666666666666671" y="121.875"/>

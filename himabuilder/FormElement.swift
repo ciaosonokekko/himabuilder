@@ -180,6 +180,7 @@ open class Text: BaseFormElement, NibFormElement {
     public static var nibName: String = "TextCollectionCell"
     var textType: TextType = .standard
     var suggestions: [String] = []
+    var buttonIcon: UIImage?
     
     public convenience init(
         title: String,
@@ -188,12 +189,16 @@ open class Text: BaseFormElement, NibFormElement {
         hidden: Bool = false,
         textType: TextType = .standard,
         suggestions: [String] = [],
+        buttonIcon: UIImage?,
         onValueUpdate: OnValueUpdate? = nil,
-        onEndEditing: OnEndEditing? = nil
+        onEndEditing: OnEndEditing? = nil,
+        onClick: OnClick? = nil
+        
     ) {
-        self.init(title: title, value: value, mandatory: mandatory, hidden: hidden, onValueUpdate: onValueUpdate, onClick: nil, onEndEditing: onEndEditing)
+        self.init(title: title, value: value, mandatory: mandatory, hidden: hidden, onValueUpdate: onValueUpdate, onClick: onClick, onEndEditing: onEndEditing)
         self.textType = textType
         self.suggestions = suggestions
+        self.buttonIcon = buttonIcon
     }
 }
 
