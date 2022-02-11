@@ -189,7 +189,7 @@ open class Text: BaseFormElement, NibFormElement {
         hidden: Bool = false,
         textType: TextType = .standard,
         suggestions: [String] = [],
-        buttonIcon: UIImage?,
+        buttonIcon: UIImage? = nil,
         onValueUpdate: OnValueUpdate? = nil,
         onEndEditing: OnEndEditing? = nil,
         onClick: OnClick? = nil
@@ -213,6 +213,10 @@ open class Label: BaseFormElement, NibFormElement {
     public convenience init(title: String, value: String?, onClick: OnClick? = nil, orientation: OrientationType = .standard) {
         self.init(title: title, value: value, orientation: orientation, onValueUpdate: nil, onClick: onClick)
     }
+}
+
+open class PickerDate: BaseFormElement, NibFormElement {
+    public static var nibName: String = "DatePickerCollectionCell"
 }
 
 public extension UICollectionView {

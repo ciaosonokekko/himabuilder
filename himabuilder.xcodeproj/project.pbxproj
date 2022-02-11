@@ -20,6 +20,8 @@
 		1311D7A92646846F00CB97C3 /* TextCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1311D79C2646846F00CB97C3 /* TextCollectionCell.swift */; };
 		13A07A3C2714802D00090AC7 /* CheckCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A07A3A2714802D00090AC7 /* CheckCollectionCell.swift */; };
 		13A07A3D2714802D00090AC7 /* CheckCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A07A3B2714802D00090AC7 /* CheckCollectionCell.xib */; };
+		13B2E24627B6C80D007315AB /* DatePickerCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B2E24427B6C80D007315AB /* DatePickerCollectionCell.swift */; };
+		13B2E24727B6C80D007315AB /* DatePickerCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B2E24527B6C80D007315AB /* DatePickerCollectionCell.xib */; };
 		13D2295D2716D5CC0075EF4B /* LabelVerticalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D2295B2716D5CC0075EF4B /* LabelVerticalCollectionCell.swift */; };
 		13D2295E2716D5CC0075EF4B /* LabelVerticalCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D2295C2716D5CC0075EF4B /* LabelVerticalCollectionCell.xib */; };
 		13E6961D264683A900D78168 /* himabuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 13E6961B264683A900D78168 /* himabuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -40,6 +42,8 @@
 		1311D79C2646846F00CB97C3 /* TextCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCollectionCell.swift; sourceTree = "<group>"; };
 		13A07A3A2714802D00090AC7 /* CheckCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCollectionCell.swift; sourceTree = "<group>"; };
 		13A07A3B2714802D00090AC7 /* CheckCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckCollectionCell.xib; sourceTree = "<group>"; };
+		13B2E24427B6C80D007315AB /* DatePickerCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerCollectionCell.swift; sourceTree = "<group>"; };
+		13B2E24527B6C80D007315AB /* DatePickerCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerCollectionCell.xib; sourceTree = "<group>"; };
 		13D2295B2716D5CC0075EF4B /* LabelVerticalCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelVerticalCollectionCell.swift; sourceTree = "<group>"; };
 		13D2295C2716D5CC0075EF4B /* LabelVerticalCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelVerticalCollectionCell.xib; sourceTree = "<group>"; };
 		13E69618264683A900D78168 /* himabuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = himabuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +120,15 @@
 			path = CheckCollectionCell;
 			sourceTree = "<group>";
 		};
+		13B2E23D27B6C7C3007315AB /* DatePickerCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				13B2E24427B6C80D007315AB /* DatePickerCollectionCell.swift */,
+				13B2E24527B6C80D007315AB /* DatePickerCollectionCell.xib */,
+			);
+			path = DatePickerCollectionCell;
+			sourceTree = "<group>";
+		};
 		13D2295A2716D5990075EF4B /* LabelVerticalCollectionCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				1311D78A2646846F00CB97C3 /* FormElement.swift */,
+				13B2E23D27B6C7C3007315AB /* DatePickerCollectionCell */,
 				13D2295A2716D5990075EF4B /* LabelVerticalCollectionCell */,
 				13A07A392714801A00090AC7 /* CheckCollectionCell */,
 				1311D78B2646846F00CB97C3 /* LinearSelectCollectionCell */,
@@ -166,7 +180,6 @@
 				F788153ABD1499159D1A6888 /* Pods-himabuilder.debug.xcconfig */,
 				1D5378D103093E45478E67ED /* Pods-himabuilder.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -221,6 +234,7 @@
 				TargetAttributes = {
 					13E69617264683A900D78168 = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1320;
 					};
 				};
 			};
@@ -252,6 +266,7 @@
 				13A07A3D2714802D00090AC7 /* CheckCollectionCell.xib in Resources */,
 				1311D7A82646846F00CB97C3 /* TextCollectionCell.xib in Resources */,
 				1311D7A72646846F00CB97C3 /* ButtonCollectionCell.xib in Resources */,
+				13B2E24727B6C80D007315AB /* DatePickerCollectionCell.xib in Resources */,
 				1311D7A22646846F00CB97C3 /* TextAreaCollectionCell.xib in Resources */,
 				13D2295E2716D5CC0075EF4B /* LabelVerticalCollectionCell.xib in Resources */,
 			);
@@ -289,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13B2E24627B6C80D007315AB /* DatePickerCollectionCell.swift in Sources */,
 				1311D79F2646846F00CB97C3 /* LinearSelectCollectionCell.swift in Sources */,
 				1311D7A32646846F00CB97C3 /* TextAreaCollectionCell.swift in Sources */,
 				1311D7A12646846F00CB97C3 /* LabelCollectionCell.swift in Sources */,
@@ -429,6 +445,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F788153ABD1499159D1A6888 /* Pods-himabuilder.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RMPW9T3U9L;
@@ -445,6 +462,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = it.ciaosonokekko.himabuilder;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -454,6 +472,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1D5378D103093E45478E67ED /* Pods-himabuilder.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = RMPW9T3U9L;

@@ -15,7 +15,6 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var btnIcon: UIButton!
     
-    
     public var data: Text! {
         didSet {
             setup()
@@ -65,23 +64,20 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
         self.txtValue.text = data.value
         
         if let btnImage = self.data.buttonIcon {
-//            let button = UIButton()
-////            button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-//            button.translatesAutoresizingMaskIntoConstraints = false
-//            button.widthAnchor.constraint(equalToConstant: 30).isActive = true
-//            button.heightAnchor.constraint(equalToConstant: 30).isActive = true
             btnIcon.setTitle("", for: .normal)
             btnIcon.setImage(btnImage, for: UIControl.State.normal)
             btnIcon.contentMode = .scaleAspectFit
             btnIcon.addTarget(self, action:#selector(self.buttonTapped), for: .touchUpInside)
             btnIcon.isHidden = false
-//            self.stackView.addArrangedSubview(button)
         }
-        
         
         self.txtValue.keyboardType = data.keyboardType
         
         evaluateMandatory()
+        
+        if data.textType == .date || data.textType == .standard {
+            return
+        }
     }
     
     @objc func buttonTapped() {
@@ -142,5 +138,16 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension Date {
+    static let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy HH:mm"
+        return formatter
+    }()
+    var formatted: String {
+        return Date.formatter.string(from: self)
     }
 }
