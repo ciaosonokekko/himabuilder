@@ -22,6 +22,7 @@ public enum FormElement {
     case label(Label)
     case button(Button)
     case check(Check)
+    case pickerDate(PickerDate)
     
     static var nibNames: [String] {
         return [LinearSelect.nibName, Text.nibName, TextArea.nibName, Label.nibName, Label.nibName2, Button.nibName, Check.nibName]
@@ -35,6 +36,7 @@ public enum FormElement {
         case .label(let element): return element.hidden
         case .button(let element): return element.hidden
         case .check(let element): return element.hidden
+        case .pickerDate(let element): return element.hidden
         }
     }
     
@@ -217,6 +219,15 @@ open class Label: BaseFormElement, NibFormElement {
 
 open class PickerDate: BaseFormElement, NibFormElement {
     public static var nibName: String = "DatePickerCollectionCell"
+    public typealias OnDataValueUpdate = ((BaseFormElement, Date) -> Void)
+    var dataValue: Date?
+    var onDataValueUpdate: OnDataValueUpdate?
+    
+    public convenience init(title: String, value: Date?, mandatory: Bool = false, hidden: Bool = false, onValueUpdate: OnDataValueUpdate?) {
+        self.init(title: title, value: nil, mandatory: mandatory, hidden: hidden)
+        self.onDataValueUpdate = onValueUpdate
+        self.dataValue = value
+    }    
 }
 
 public extension UICollectionView {
@@ -230,6 +241,7 @@ public extension UICollectionView {
         self.register(UINib(nibName: Label.nibName2, bundle: Bundle(for: LabelVerticalCollectionCell.self)), forCellWithReuseIdentifier: Label.nibName2)
         self.register(UINib(nibName: TextArea.nibName, bundle: Bundle(for: TextAreaCollectionCell.self)), forCellWithReuseIdentifier: TextArea.nibName)
         self.register(UINib(nibName: Text.nibName, bundle: Bundle(for: TextCollectionCell.self)), forCellWithReuseIdentifier: Text.nibName)
+        self.register(UINib(nibName: PickerDate.nibName, bundle: Bundle(for: DatePickerCollectionCell.self)), forCellWithReuseIdentifier: PickerDate.nibName)
         
 //        FormElement.nibNames.forEach( {
 //            self.register(UINib(nibName: $0, bundle: .main), forCellWithReuseIdentifier: $0)
@@ -307,6 +319,16 @@ public extension UICollectionView {
         return formCell
     }
     
+    func pickerDateCell(_ data: PickerDate, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.dequeueReusableCell(withReuseIdentifier: PickerDate.nibName, for: indexPath)
+        guard let formCell = cell as? DatePickerCollectionCell else {
+            return UICollectionViewCell()
+        }
+        formCell.data = data
+        formCell.addBorders([.bottom])
+        return formCell
+    }
+    
     func formElementListCell(_ element: FormElement, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch element {
         case .linearSelect(let data):
@@ -326,6 +348,8 @@ public extension UICollectionView {
             return buttonCell(data, cellForItemAt: indexPath)
         case .check(let data):
             return checkCell(data, cellForItemAt: indexPath)
+        case .pickerDate(let data):
+            return pickerDateCell(data, cellForItemAt: indexPath)
         }
     }
 }

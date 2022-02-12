@@ -20,10 +20,16 @@ class DatePickerCollectionCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setupUI()
     }
     
     fileprivate func setupUI() {
+        self.pickerDate.timeZone = TimeZone(secondsFromGMT: 0)
+        if #available(iOS 14.0, *) {
+            pickerDate.preferredDatePickerStyle = .compact
+        } else {
+            // Fallback on earlier versions
+        }
         pickerDate.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
     }
     
@@ -39,10 +45,11 @@ class DatePickerCollectionCell: UICollectionViewCell {
     
     func setup() {
         self.lblTitle.text = data.title
+        self.pickerDate.setDate(data.dataValue ?? Date(), animated: true)
     }
     
     @objc func handleDatePicker(_ datePicker: UIDatePicker) {
-        data.onValueUpdate?(data, pickerDate.date.description)
+        data.onDataValueUpdate?(data, datePicker.date)
     }
 
 }
