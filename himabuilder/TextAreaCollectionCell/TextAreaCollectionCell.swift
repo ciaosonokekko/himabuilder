@@ -35,9 +35,7 @@ class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
     func setup() {
         self.lblTitle.text = data.title
         self.txtValue.text = data.value
-        self.txtValue.delegate = self
-        self.txtValue.text = "Tocca qui per scrivere"
-        self.txtValue.textColor = UIColor.systemGray
+        self.txtValue.delegate = self        
         evaluateMandatory()
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DatePickerCollectionCell: UICollectionViewCell {
+public class DatePickerCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var pickerDate: UIDatePicker!
@@ -18,7 +18,7 @@ class DatePickerCollectionCell: UICollectionViewCell {
         }
     }
 
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
     }
@@ -38,18 +38,31 @@ class DatePickerCollectionCell: UICollectionViewCell {
         self.lblTitle.text = nil
     }
     
-    public func updateValue(value: String?) {
-        data.value = value
-        setup()
-    }
-    
     func setup() {
         self.lblTitle.text = data.title
+        self.pickerDate.datePickerMode = data.datePickerMode
         self.pickerDate.setDate(data.dataValue ?? Date(), animated: true)
+        
+        evaluateMandatory()
+    }
+    
+    // use this as callBack in case of failure of data check
+    public func updateData(data: PickerDate) {
+        self.data = data
     }
     
     @objc func handleDatePicker(_ datePicker: UIDatePicker) {
-        data.onDataValueUpdate?(data, datePicker.date)
+        data.dataValue = datePicker.date
+        data.onDataValueUpdate?(self, data, datePicker.date)
+        evaluateMandatory()
+    }
+    
+    func evaluateMandatory() {
+        if data.mandatory && data.dataValue == nil {
+            self.lblTitle.textColor = .red
+        } else {
+            self.lblTitle.textColor = .label
+        }
     }
 
 }

@@ -25,7 +25,7 @@ public enum FormElement {
     case pickerDate(PickerDate)
     
     static var nibNames: [String] {
-        return [LinearSelect.nibName, Text.nibName, TextArea.nibName, Label.nibName, Label.nibName2, Button.nibName, Check.nibName]
+        return [LinearSelect.nibName, Text.nibName, TextArea.nibName, Label.nibName, Label.nibName2, Button.nibName, Check.nibName, PickerDate.nibName]
     }
     
     public var hidden: Bool {
@@ -219,14 +219,17 @@ open class Label: BaseFormElement, NibFormElement {
 
 open class PickerDate: BaseFormElement, NibFormElement {
     public static var nibName: String = "DatePickerCollectionCell"
-    public typealias OnDataValueUpdate = ((BaseFormElement, Date) -> Void)
+    public typealias OnDataValueUpdate = ((UICollectionViewCell, BaseFormElement, Date) -> Void)
+    
     var dataValue: Date?
     var onDataValueUpdate: OnDataValueUpdate?
+    var datePickerMode: UIDatePicker.Mode = .dateAndTime
     
-    public convenience init(title: String, value: Date?, mandatory: Bool = false, hidden: Bool = false, onValueUpdate: OnDataValueUpdate?) {
+    public convenience init(title: String, value: Date?, mandatory: Bool = false, hidden: Bool = false, datePickerMode: UIDatePicker.Mode = .dateAndTime, onDataValueUpdate: OnDataValueUpdate?) {
         self.init(title: title, value: nil, mandatory: mandatory, hidden: hidden)
-        self.onDataValueUpdate = onValueUpdate
+        self.onDataValueUpdate = onDataValueUpdate
         self.dataValue = value
+        self.datePickerMode = datePickerMode
     }    
 }
 
