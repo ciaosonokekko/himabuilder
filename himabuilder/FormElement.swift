@@ -214,9 +214,14 @@ open class TextArea: BaseFormElement, NibFormElement {
 open class Label: BaseFormElement, NibFormElement {
     public static var nibName: String = "LabelCollectionCell"
     public static var nibName2: String = "LabelVerticalCollectionCell"
+    var buttonIcon: UIImage?
+    var onButtonIconClick: OnClick?
+
     
-    public convenience init(title: String, value: String?, onClick: OnClick? = nil, orientation: OrientationType = .standard) {
+    public convenience init(title: String, value: String?, buttonIcon: UIImage? = nil, onClick: OnClick? = nil, onButtonIconClick: OnClick? = nil, orientation: OrientationType = .standard) {
         self.init(title: title, value: value, orientation: orientation, onValueUpdate: nil, onClick: onClick)
+        self.buttonIcon = buttonIcon
+        self.onButtonIconClick = onButtonIconClick
     }
 }
 

@@ -13,6 +13,10 @@ public class LabelCollectionCell: UICollectionViewCell {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblValue: UILabel!
     @IBOutlet weak var container: UIView!
+    @IBOutlet weak var stackView: UIStackView!
+
+    @IBOutlet weak var btnIcon: UIButton!
+
     
     open var data: Label! {
         didSet {
@@ -36,6 +40,8 @@ public class LabelCollectionCell: UICollectionViewCell {
     open override func prepareForReuse() {
         self.lblTitle.text = nil
         self.lblValue.text = ""
+        self.btnIcon.isHidden = true
+
     }
     
     func setup() {
@@ -43,11 +49,31 @@ public class LabelCollectionCell: UICollectionViewCell {
         self.container.clipsToBounds = true
         self.lblTitle.text = data.title
         self.lblValue.text = data.value
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.buttonTapped))
+        lblValue.addGestureRecognizer(tap)
 //        self.lblValue.backgroundColor = .red
 //        self.lblValue.sizeToFit()
         
+        if let btnImage = self.data.buttonIcon {
+            btnIcon.setTitle("", for: .normal)
+            btnIcon.setImage(btnImage, for: UIControl.State.normal)
+            btnIcon.contentMode = .scaleAspectFit
+            btnIcon.addTarget(self, action:#selector(self.buttonIconTapped), for: .touchUpInside)
+            btnIcon.isHidden = false
+        }
+        
         evaluateMandatory()
     }
+    
+    @objc func buttonTapped() {
+        data.onClick?(data, self)
+    }
+    
+    @objc func buttonIconTapped() {
+        if !self.data.editable { return }
+        data.onButtonIconClick?(data, self)
+    }
+    
     
     func evaluateMandatory() {
         if data.mandatory && data.value == nil {
