@@ -62,6 +62,9 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
     func setup() {
         self.lblTitle.text = data.title
         self.txtValue.text = data.value
+        self.txtValue.isUserInteractionEnabled = data.editable
+        self.txtValue.textColor = data.editable ? .label : .systemGray
+        
         
         if let btnImage = self.data.buttonIcon {
             btnIcon.setTitle("", for: .normal)

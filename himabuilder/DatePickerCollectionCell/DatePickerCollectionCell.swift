@@ -9,7 +9,7 @@ import UIKit
 
 public class DatePickerCollectionCell: UICollectionViewCell {
     
-    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak public var lblTitle: UILabel!
     @IBOutlet weak var pickerDate: UIDatePicker!
 
     open var data: PickerDate! {
@@ -42,7 +42,8 @@ public class DatePickerCollectionCell: UICollectionViewCell {
         self.lblTitle.text = data.title
         self.pickerDate.datePickerMode = data.datePickerMode
         self.pickerDate.setDate(data.dataValue ?? Date(), animated: true)
-        
+        self.pickerDate.isUserInteractionEnabled = data.editable
+
         evaluateMandatory()
     }
     

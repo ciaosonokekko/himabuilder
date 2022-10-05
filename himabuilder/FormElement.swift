@@ -60,6 +60,7 @@ open class BaseFormElement {
     open var mandatory: Bool = false
     open var hidden: Bool = false
     open var enable: Bool = true
+    open var editable: Bool = true
     open var orientation: OrientationType = .standard
     open var keyboardType: UIKeyboardType = .default
     
@@ -71,7 +72,7 @@ open class BaseFormElement {
     var onValueUpdate: OnValueUpdate?
     var onClick: OnClick?
     
-    public convenience init(title: String, value: String? = nil, mandatory: Bool = false, orientation: OrientationType = .standard, keyboardType: UIKeyboardType = .default, hidden: Bool = false, onValueUpdate: OnValueUpdate? = nil, onClick: OnClick? = nil, onEndEditing: OnEndEditing? = nil) {
+    public convenience init(title: String, value: String? = nil, mandatory: Bool = false, orientation: OrientationType = .standard, keyboardType: UIKeyboardType = .default, hidden: Bool = false, onValueUpdate: OnValueUpdate? = nil, onClick: OnClick? = nil, onEndEditing: OnEndEditing? = nil, editable: Bool = true) {
         self.init()
         self.title = title
         self.value = value
@@ -82,6 +83,7 @@ open class BaseFormElement {
         self.onValueUpdate = onValueUpdate
         self.onClick = onClick
         self.onEndEditing = onEndEditing
+        self.editable = editable
     }
     
     public convenience init(title: String, value: String?) {
@@ -194,10 +196,11 @@ open class Text: BaseFormElement, NibFormElement {
         buttonIcon: UIImage? = nil,
         onValueUpdate: OnValueUpdate? = nil,
         onEndEditing: OnEndEditing? = nil,
-        onClick: OnClick? = nil
+        onClick: OnClick? = nil,
+        editable: Bool = true
         
     ) {
-        self.init(title: title, value: value, mandatory: mandatory, hidden: hidden, onValueUpdate: onValueUpdate, onClick: onClick, onEndEditing: onEndEditing)
+        self.init(title: title, value: value, mandatory: mandatory, hidden: hidden, onValueUpdate: onValueUpdate, onClick: onClick, onEndEditing: onEndEditing, editable: editable)
         self.textType = textType
         self.suggestions = suggestions
         self.buttonIcon = buttonIcon

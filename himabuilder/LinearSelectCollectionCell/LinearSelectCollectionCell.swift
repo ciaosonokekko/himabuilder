@@ -45,6 +45,8 @@ public class LinearSelectCollectionCell: UICollectionViewCell {
         }
         self.lblTitle.text = data.title
         
+        self.lblValue.isUserInteractionEnabled = data.editable
+        
         evaluateMandatory()
     }
     
