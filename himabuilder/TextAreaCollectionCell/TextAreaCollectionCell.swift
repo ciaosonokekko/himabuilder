@@ -39,6 +39,7 @@ class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
             self.txtValue.textColor = .systemGray
         } else {
             self.txtValue.text = data.value
+            self.txtValue.textColor = .label
         }
         if !data.editable {
             self.txtValue.text = data.value
