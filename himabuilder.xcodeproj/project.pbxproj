@@ -26,6 +26,8 @@
 		13D2295E2716D5CC0075EF4B /* LabelVerticalCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D2295C2716D5CC0075EF4B /* LabelVerticalCollectionCell.xib */; };
 		13E6961D264683A900D78168 /* himabuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 13E6961B264683A900D78168 /* himabuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B469735495CE2296A37636C0 /* Pods_himabuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEC05AD78FCC306F52E0D0E /* Pods_himabuilder.framework */; };
+		D3719BCB295B457A00AF3149 /* CheckLeftSubtitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3719BC6295B457A00AF3149 /* CheckLeftSubtitleCollectionCell.xib */; };
+		D3719BCC295B457A00AF3149 /* CheckLeftSubtitleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3719BC7295B457A00AF3149 /* CheckLeftSubtitleCollectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		13E6961C264683A900D78168 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D5378D103093E45478E67ED /* Pods-himabuilder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-himabuilder.release.xcconfig"; path = "Target Support Files/Pods-himabuilder/Pods-himabuilder.release.xcconfig"; sourceTree = "<group>"; };
 		BBEC05AD78FCC306F52E0D0E /* Pods_himabuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_himabuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3719BC6295B457A00AF3149 /* CheckLeftSubtitleCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckLeftSubtitleCollectionCell.xib; sourceTree = "<group>"; };
+		D3719BC7295B457A00AF3149 /* CheckLeftSubtitleCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckLeftSubtitleCollectionCell.swift; sourceTree = "<group>"; };
 		F788153ABD1499159D1A6888 /* Pods-himabuilder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-himabuilder.debug.xcconfig"; path = "Target Support Files/Pods-himabuilder/Pods-himabuilder.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +166,7 @@
 				1311D78A2646846F00CB97C3 /* FormElement.swift */,
 				13B2E23D27B6C7C3007315AB /* DatePickerCollectionCell */,
 				13D2295A2716D5990075EF4B /* LabelVerticalCollectionCell */,
+				D3719BC5295B457A00AF3149 /* CheckLeftSubtitleCollectionCell */,
 				13A07A392714801A00090AC7 /* CheckCollectionCell */,
 				1311D78B2646846F00CB97C3 /* LinearSelectCollectionCell */,
 				1311D78E2646846F00CB97C3 /* LabelCollectionCell */,
@@ -189,6 +194,15 @@
 				BBEC05AD78FCC306F52E0D0E /* Pods_himabuilder.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3719BC5295B457A00AF3149 /* CheckLeftSubtitleCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				D3719BC6295B457A00AF3149 /* CheckLeftSubtitleCollectionCell.xib */,
+				D3719BC7295B457A00AF3149 /* CheckLeftSubtitleCollectionCell.swift */,
+			);
+			path = CheckLeftSubtitleCollectionCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3719BCB295B457A00AF3149 /* CheckLeftSubtitleCollectionCell.xib in Resources */,
 				1311D7A02646846F00CB97C3 /* LabelCollectionCell.xib in Resources */,
 				1311D79E2646846F00CB97C3 /* LinearSelectCollectionCell.xib in Resources */,
 				13A07A3D2714802D00090AC7 /* CheckCollectionCell.xib in Resources */,
@@ -312,6 +327,7 @@
 				13D2295D2716D5CC0075EF4B /* LabelVerticalCollectionCell.swift in Sources */,
 				1311D7A92646846F00CB97C3 /* TextCollectionCell.swift in Sources */,
 				13A07A3C2714802D00090AC7 /* CheckCollectionCell.swift in Sources */,
+				D3719BCC295B457A00AF3149 /* CheckLeftSubtitleCollectionCell.swift in Sources */,
 				1311D79D2646846F00CB97C3 /* FormElement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

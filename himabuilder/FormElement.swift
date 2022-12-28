@@ -22,6 +22,7 @@ public enum FormElement {
     case label(Label)
     case button(Button)
     case check(Check)
+    case checkWithSubtitle(Check)
     case pickerDate(PickerDate)
     
     static var nibNames: [String] {
@@ -36,6 +37,7 @@ public enum FormElement {
         case .label(let element): return element.hidden
         case .button(let element): return element.hidden
         case .check(let element): return element.hidden
+        case .checkWithSubtitle(let element): return element.hidden
         case .pickerDate(let element): return element.hidden
         }
     }
@@ -44,6 +46,7 @@ public enum FormElement {
         switch(self) {
         case .textarea(_): return hidden ? 0 : 120
         case .label(let label): return hidden ? 0 : (label.orientation == .vertical ? 60 : 44)
+        case .checkWithSubtitle(let check): return check.hasExtraTextField ? 100 : 70
         default: return hidden ? 0 : 44
         }
     }
@@ -56,6 +59,7 @@ public protocol NibFormElement {
 open class BaseFormElement {
     open var title: String?
     open var subtitle: String?
+    open var hasExtraTextField: Bool = false
     open var value: String?
     open var mandatory: Bool = false
     open var hidden: Bool = false
@@ -70,9 +74,10 @@ open class BaseFormElement {
     
     var onEndEditing: OnEndEditing?
     var onValueUpdate: OnValueUpdate?
+    var onExtraValueUpdate: OnValueUpdate?
     var onClick: OnClick?
     
-    public convenience init(title: String, value: String? = nil, mandatory: Bool = false, orientation: OrientationType = .standard, keyboardType: UIKeyboardType = .default, hidden: Bool = false, onValueUpdate: OnValueUpdate? = nil, onClick: OnClick? = nil, onEndEditing: OnEndEditing? = nil, editable: Bool = true) {
+    public convenience init(title: String, value: String? = nil, mandatory: Bool = false, orientation: OrientationType = .standard, keyboardType: UIKeyboardType = .default, hidden: Bool = false, onValueUpdate: OnValueUpdate? = nil, onClick: OnClick? = nil, onEndEditing: OnEndEditing? = nil, editable: Bool = true, subtitle: String? = nil, extraTextField: Bool = false) {
         self.init()
         self.title = title
         self.value = value
@@ -84,6 +89,8 @@ open class BaseFormElement {
         self.onClick = onClick
         self.onEndEditing = onEndEditing
         self.editable = editable
+        self.subtitle = subtitle
+        self.hasExtraTextField = extraTextField
     }
     
     public convenience init(title: String, value: String?) {
@@ -169,9 +176,13 @@ open class Button: BaseFormElement, NibFormElement {
 
 open class Check: BaseFormElement, NibFormElement {
     static public var nibName: String = "CheckCollectionCell"
+    static public var nibName2: String = "CheckLeftSubtitleCollectionCell"
     
-    public convenience init(title: String, value: String? = nil, onValueUpdate: OnValueUpdate?) {
-        self.init(title: title, value: value, onValueUpdate: onValueUpdate, onClick: nil)
+    var extraValue: String?
+
+    public convenience init(title: String, value: String? = nil, onValueUpdate: OnValueUpdate?, subtitle: String? = nil, extraTextField: Bool = false, extraValue: String?) {
+        self.init(title: title, value: value, onValueUpdate: onValueUpdate, onClick: nil, subtitle: subtitle, extraTextField: extraTextField)
+        self.extraValue = extraValue
     }
 }
 
@@ -248,11 +259,13 @@ public extension UICollectionView {
         self.register(UINib(nibName: LinearSelect.nibName, bundle: Bundle(for: LinearSelectCollectionCell.self)), forCellWithReuseIdentifier: LinearSelect.nibName)
         self.register(UINib(nibName: Button.nibName, bundle: Bundle(for: ButtonCollectionCell.self)), forCellWithReuseIdentifier: Button.nibName)
         self.register(UINib(nibName: Check.nibName, bundle: Bundle(for: CheckCollectionCell.self)), forCellWithReuseIdentifier: Check.nibName)
+        self.register(UINib(nibName: Check.nibName2, bundle: Bundle(for: CheckLeftSubtitleCollectionCell.self)), forCellWithReuseIdentifier: Check.nibName2)
         self.register(UINib(nibName: Label.nibName, bundle: Bundle(for: LabelCollectionCell.self)), forCellWithReuseIdentifier: Label.nibName)
         self.register(UINib(nibName: Label.nibName2, bundle: Bundle(for: LabelVerticalCollectionCell.self)), forCellWithReuseIdentifier: Label.nibName2)
         self.register(UINib(nibName: TextArea.nibName, bundle: Bundle(for: TextAreaCollectionCell.self)), forCellWithReuseIdentifier: TextArea.nibName)
         self.register(UINib(nibName: Text.nibName, bundle: Bundle(for: TextCollectionCell.self)), forCellWithReuseIdentifier: Text.nibName)
         self.register(UINib(nibName: PickerDate.nibName, bundle: Bundle(for: DatePickerCollectionCell.self)), forCellWithReuseIdentifier: PickerDate.nibName)
+
         
 //        FormElement.nibNames.forEach( {
 //            self.register(UINib(nibName: $0, bundle: .main), forCellWithReuseIdentifier: $0)
@@ -330,6 +343,16 @@ public extension UICollectionView {
         return formCell
     }
     
+    func checkCellWithSubtitle(_ data: Check, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.dequeueReusableCell(withReuseIdentifier: Check.nibName2, for: indexPath)
+        guard let formCell = cell as? CheckLeftSubtitleCollectionCell else {
+            return UICollectionViewCell()
+        }
+        formCell.data = data
+        formCell.addBorders([.bottom])
+        return formCell
+    }
+    
     func pickerDateCell(_ data: PickerDate, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = self.dequeueReusableCell(withReuseIdentifier: PickerDate.nibName, for: indexPath)
         guard let formCell = cell as? DatePickerCollectionCell else {
@@ -359,6 +382,8 @@ public extension UICollectionView {
             return buttonCell(data, cellForItemAt: indexPath)
         case .check(let data):
             return checkCell(data, cellForItemAt: indexPath)
+        case .checkWithSubtitle(let data):
+            return checkCellWithSubtitle(data, cellForItemAt: indexPath)
         case .pickerDate(let data):
             return pickerDateCell(data, cellForItemAt: indexPath)
         }

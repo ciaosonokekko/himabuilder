@@ -11,7 +11,8 @@ class LabelVerticalCollectionCell: UICollectionViewCell {
 
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblValue: UILabel!
-
+    @IBOutlet weak var btnIcon: UIButton!
+    
     open var data: Label! {
         didSet {
             setup()
@@ -36,6 +37,7 @@ class LabelVerticalCollectionCell: UICollectionViewCell {
     open override func prepareForReuse() {
         self.lblTitle.text = nil
         self.lblValue.text = ""
+        self.btnIcon.isHidden = true
     }
     
     func setup() {
@@ -46,7 +48,24 @@ class LabelVerticalCollectionCell: UICollectionViewCell {
 //        self.lblValue.backgroundColor = .red
 //        self.lblValue.sizeToFit()
         
+        if let btnImage = self.data.buttonIcon {
+            btnIcon.setTitle("", for: .normal)
+            btnIcon.setImage(btnImage, for: UIControl.State.normal)
+            btnIcon.contentMode = .scaleAspectFit
+            btnIcon.addTarget(self, action:#selector(self.buttonIconTapped), for: .touchUpInside)
+            btnIcon.isHidden = false
+        }
+        
         evaluateMandatory()
+    }
+    
+    @objc func buttonTapped() {
+        data.onClick?(data, self)
+    }
+    
+    @objc func buttonIconTapped() {
+        if !self.data.editable { return }
+        data.onButtonIconClick?(data, self)
     }
     
     func evaluateMandatory() {

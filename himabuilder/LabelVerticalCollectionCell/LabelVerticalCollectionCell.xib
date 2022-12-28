@@ -21,11 +21,20 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIx-lP-hoT">
                         <rect key="frame" x="0.0" y="8" width="377" height="85"/>
                         <subviews>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oob-W3-fgo">
+                                <rect key="frame" x="335" y="27.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4KC-XQ-EKw"/>
+                                    <constraint firstAttribute="width" constant="30" id="zwB-Z0-Geu"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="Whx-bf-JvS">
-                                <rect key="frame" x="8" y="18.666666666666671" width="41.333333333333336" height="48"/>
+                                <rect key="frame" x="8" y="18.5" width="311" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJI-64-efb">
-                                        <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="az0-KE-hxH"/>
                                         </constraints>
@@ -34,7 +43,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjp-FU-BaO">
-                                        <rect key="frame" x="0.0" y="24" width="41.333333333333336" height="24"/>
+                                        <rect key="frame" x="0.0" y="24" width="311" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="kNh-mr-TI1"/>
                                         </constraints>
@@ -47,6 +56,9 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="oob-W3-fgo" secondAttribute="trailing" constant="12" id="TWS-9n-o7e"/>
+                            <constraint firstItem="oob-W3-fgo" firstAttribute="leading" secondItem="Whx-bf-JvS" secondAttribute="trailing" constant="16" id="dXv-An-a3T"/>
+                            <constraint firstItem="oob-W3-fgo" firstAttribute="centerY" secondItem="Whx-bf-JvS" secondAttribute="centerY" id="hzM-JB-ZNM"/>
                             <constraint firstItem="Whx-bf-JvS" firstAttribute="leading" secondItem="gIx-lP-hoT" secondAttribute="leadingMargin" id="reJ-Dy-ngs"/>
                             <constraint firstItem="Whx-bf-JvS" firstAttribute="centerY" secondItem="gIx-lP-hoT" secondAttribute="centerY" id="xp4-w2-6Kp"/>
                         </constraints>
@@ -63,6 +75,7 @@
             </constraints>
             <size key="customSize" width="377" height="101"/>
             <connections>
+                <outlet property="btnIcon" destination="oob-W3-fgo" id="cfD-Bv-UX8"/>
                 <outlet property="lblTitle" destination="kJI-64-efb" id="rbN-26-IDb"/>
                 <outlet property="lblValue" destination="zjp-FU-BaO" id="XB0-b3-a1P"/>
             </connections>
