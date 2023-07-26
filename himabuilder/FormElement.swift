@@ -189,6 +189,9 @@ open class Check: BaseFormElement, NibFormElement {
 public enum TextType {
     case standard
     case date
+    case integer
+    case decimal
+    case readonly
 }
 
 open class Text: BaseFormElement, NibFormElement {

@@ -75,6 +75,11 @@ public class TextCollectionCell: UICollectionViewCell, UITextFieldDelegate {
         }
         
         self.txtValue.keyboardType = data.keyboardType
+        if data.textType == .integer {
+            self.txtValue.keyboardType = .numberPad
+        } else if data.textType == .decimal {
+            self.txtValue.keyboardType = .decimalPad
+        }
         
         evaluateMandatory()
         
