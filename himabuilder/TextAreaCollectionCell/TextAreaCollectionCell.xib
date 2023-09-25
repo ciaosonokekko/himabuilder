@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TextAreaCollectionCell" id="gTV-IL-0wX" customClass="TextAreaCollectionCell" customModule="Mambu" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TextAreaCollectionCell" id="gTV-IL-0wX" customClass="TextAreaCollectionCell" customModule="himabuilder" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="344" height="211"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -30,14 +30,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bb4-Md-Hel">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bb4-Md-Hel">
                                 <rect key="frame" x="0.0" y="210" width="344" height="1"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="0nZ-Yn-BOJ"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="S6p-7t-QU5">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="S6p-7t-QU5">
                                 <rect key="frame" x="4" y="46" width="332" height="157"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -48,12 +48,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="bb4-Md-Hel" secondAttribute="bottom" id="3pd-FK-YSE"/>
                             <constraint firstItem="bb4-Md-Hel" firstAttribute="leading" secondItem="62C-Ey-Kco" secondAttribute="leading" id="6GS-W5-D9A"/>
                             <constraint firstItem="stz-tz-jRm" firstAttribute="leading" secondItem="62C-Ey-Kco" secondAttribute="leading" constant="8" id="BiB-l1-chj"/>
                             <constraint firstAttribute="bottom" secondItem="S6p-7t-QU5" secondAttribute="bottom" constant="8" id="EzH-nf-8iy"/>
                             <constraint firstAttribute="trailing" secondItem="S6p-7t-QU5" secondAttribute="trailing" constant="8" id="GRF-vT-Gej"/>
                             <constraint firstItem="S6p-7t-QU5" firstAttribute="leading" secondItem="62C-Ey-Kco" secondAttribute="leading" constant="4" id="I8F-5g-7ak"/>
+                            <constraint firstItem="bb4-Md-Hel" firstAttribute="bottom" secondItem="S6p-7t-QU5" secondAttribute="bottom" constant="8" id="Lu2-CV-xfz"/>
                             <constraint firstItem="S6p-7t-QU5" firstAttribute="top" secondItem="stz-tz-jRm" secondAttribute="bottom" constant="8" id="PfD-E3-wmd"/>
                             <constraint firstAttribute="trailing" secondItem="bb4-Md-Hel" secondAttribute="trailing" id="XGL-GW-Px4"/>
                             <constraint firstItem="stz-tz-jRm" firstAttribute="top" secondItem="62C-Ey-Kco" secondAttribute="top" constant="8" id="xSu-LJ-6IU"/>
@@ -78,13 +78,13 @@
     </objects>
     <resources>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color white="0.0" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color white="0.0" alpha="0.49803921568627452" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

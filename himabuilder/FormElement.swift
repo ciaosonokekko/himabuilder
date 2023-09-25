@@ -301,7 +301,8 @@ public extension UICollectionView {
             return UICollectionViewCell()
         }
         formCell.data = data
-        formCell.addBorders([.bottom])
+        let borderData = UIView.BorderData(width: 1, color: .clear)
+        formCell.addBorders([.customBottom(borderData)])
         return formCell
     }
     
