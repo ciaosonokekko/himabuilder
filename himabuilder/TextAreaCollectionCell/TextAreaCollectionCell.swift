@@ -21,7 +21,8 @@ class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        setupUI()
     }
     
     fileprivate func setupUI() {
@@ -29,19 +30,23 @@ class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
     }
     
     override func prepareForReuse() {
-        #warning("ALBE USAMIIII!!!")
+        lblTitle.text = nil
+        txtValue.text = nil
     }
     
     func setup() {
         self.lblTitle.text = data.title
-        if data.value == "" {
+        if data.value?.isEmpty ?? true {
             self.txtValue.text = "Tocca qui per scrivere"
             self.txtValue.textColor = .systemGray
         } else {
             self.txtValue.text = data.value
             self.txtValue.textColor = .label
         }
-        if !data.editable {
+        if data.editable {
+            // nothing to do??
+            self.txtValue.textColor = .label
+        } else {
             self.txtValue.text = data.value
             self.txtValue.textColor = .systemGray
         }
