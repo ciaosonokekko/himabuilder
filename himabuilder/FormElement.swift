@@ -268,7 +268,7 @@ public extension UICollectionView {
         self.register(UINib(nibName: TextArea.nibName, bundle: Bundle(for: TextAreaCollectionCell.self)), forCellWithReuseIdentifier: TextArea.nibName)
         self.register(UINib(nibName: Text.nibName, bundle: Bundle(for: TextCollectionCell.self)), forCellWithReuseIdentifier: Text.nibName)
         self.register(UINib(nibName: PickerDate.nibName, bundle: Bundle(for: DatePickerCollectionCell.self)), forCellWithReuseIdentifier: PickerDate.nibName)
-
+        
         
 //        FormElement.nibNames.forEach( {
 //            self.register(UINib(nibName: $0, bundle: .main), forCellWithReuseIdentifier: $0)

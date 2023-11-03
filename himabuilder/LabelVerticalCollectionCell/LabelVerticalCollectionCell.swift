@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LabelVerticalCollectionCell: UICollectionViewCell {
+public class LabelVerticalCollectionCell: UICollectionViewCell {
 
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblValue: UILabel!

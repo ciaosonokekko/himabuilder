@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
+open class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var txtValue: UITextView!
@@ -19,7 +19,7 @@ class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
         }
     }
 
-    override func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
         
         setupUI()
@@ -29,7 +29,7 @@ class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
         // base setup ui
     }
     
-    override func prepareForReuse() {
+    override open func prepareForReuse() {
         lblTitle.text = nil
         txtValue.text = nil
     }
@@ -63,7 +63,7 @@ class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
         }
     }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
+    public func textViewDidBeginEditing(_ textView: UITextView) {
         if !data.editable { return }
         if textView.textColor == UIColor.systemGray {
             textView.text = nil
@@ -71,7 +71,7 @@ class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
         }
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
+    public func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "Tocca qui per scrivere"
             textView.textColor = UIColor.systemGray
@@ -83,7 +83,7 @@ class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
         }
     }
     
-    func textViewDidChange(_ textView: UITextView) {
+    public func textViewDidChange(_ textView: UITextView) {
         data.onValueUpdate?(data, textView.text)
     }
     
