@@ -12,13 +12,22 @@ open class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var txtValue: UITextView!
+    @IBOutlet var txtHeightConstraint: NSLayoutConstraint!
+    
+    private let placeholderLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Tocca qui per scrivere"
+        label.textColor = .systemGray
+        label.font = UIFont.systemFont(ofSize: 16)
+        return label
+    }()
     
     var data: TextArea! {
         didSet {
             setup()
         }
     }
-
+    
     override open func awakeFromNib() {
         super.awakeFromNib()
         
@@ -26,32 +35,33 @@ open class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
     }
     
     fileprivate func setupUI() {
-        // base setup ui
+        txtValue.addSubview(placeholderLabel)
+        placeholderLabel.frame = CGRect(x: 5, y: 8, width: txtValue.frame.width - 10, height: 20)
+        placeholderLabel.isHidden = !txtValue.text.isEmpty
+        txtValue.delegate = self
     }
     
     override open func prepareForReuse() {
         lblTitle.text = nil
         txtValue.text = nil
+        placeholderLabel.isHidden = false
     }
     
     func setup() {
         self.lblTitle.text = data.title
         if data.value?.isEmpty ?? true {
-            self.txtValue.text = "Tocca qui per scrivere"
-            self.txtValue.textColor = .systemGray
+            self.txtValue.text = ""
+            self.placeholderLabel.isHidden = false
         } else {
             self.txtValue.text = data.value
-            self.txtValue.textColor = .label
+            self.placeholderLabel.isHidden = true
         }
-        if data.editable {
-            // nothing to do??
-            self.txtValue.textColor = .label
-        } else {
-            self.txtValue.text = data.value
-            self.txtValue.textColor = .systemGray
+        if !data.editable {
+            self.txtHeightConstraint = nil
+            placeholderLabel.isHidden = true
         }
+        self.txtValue.textColor = data.editable ? .label : .systemGray
         self.txtValue.isUserInteractionEnabled = data.editable
-        self.txtValue.delegate = self
         evaluateMandatory()
     }
     
@@ -65,16 +75,12 @@ open class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
     
     public func textViewDidBeginEditing(_ textView: UITextView) {
         if !data.editable { return }
-        if textView.textColor == UIColor.systemGray {
-            textView.text = nil
-            textView.textColor = UIColor.label
-        }
+        placeholderLabel.isHidden = true
     }
     
     public func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Tocca qui per scrivere"
-            textView.textColor = UIColor.systemGray
+            placeholderLabel.isHidden = false
             if data.mandatory {
                 self.lblTitle.textColor = .red
             }
@@ -84,6 +90,7 @@ open class TextAreaCollectionCell: UICollectionViewCell, UITextViewDelegate {
     }
     
     public func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !textView.text.isEmpty
         data.onValueUpdate?(data, textView.text)
     }
     
